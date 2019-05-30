@@ -27,11 +27,15 @@ check:
 unittests:
   stage: test
   script:
+    - apt-get update
+    - apt-get install libgtk-3-dev -y
     - cargo test --release
 
 benchmarktests:
   stage: test
   script:
+    - apt-get update
+    - apt-get install libgtk-3-dev -y
     - cargo bench
 
 

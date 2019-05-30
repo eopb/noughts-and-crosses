@@ -31,6 +31,7 @@ fn main() {
     let grid = Grid::new();
     grid.insert_column(3);
     grid.insert_row(3);
+    grid.set_column_homogeneous(true);grid.set_row_homogeneous(true);
     grid.attach(&button, 1, 1, 1, 1);
     grid.attach(&button1, 1, 2, 1, 1);
     grid.attach(&button2, 1, 3, 1, 1);
