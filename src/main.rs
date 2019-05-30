@@ -6,7 +6,7 @@ fn main() {
         println!("Failed to initialize GTK.");
         return;
     }
-    let button_size = 1;
+
     let window = Window::new(WindowType::Toplevel);
     window.set_title("First GTK+ Program");
     window.set_default_size(350, 70);

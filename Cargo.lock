@@ -182,13 +182,6 @@ dependencies = [
 
 [[package]]
 name = "gtk"
-version = "0.1.0"
-dependencies = [
- "gtk 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "gtk"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
@@ -239,6 +232,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "libc"
 version = "0.2.55"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "noughts-and-crosses-gtk"
+version = "0.0.1"
+dependencies = [
+ "gtk 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "pango"
