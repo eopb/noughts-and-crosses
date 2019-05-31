@@ -15,7 +15,7 @@ fn main() {
     window.set_title("Noughts and crosses GTK");
     window.set_default_size(350, 350);
 
-    let mut game_state = Rc::new(RefCell::new(GameState::new()));
+    let game_state = Rc::new(RefCell::new(GameState::new()));
 
     let button_array = [
         [
@@ -45,9 +45,13 @@ fn main() {
         for (index, button) in row.iter().enumerate().map(|(x, y)| ((x), y)) {
             {
                 let game_state = game_state.clone();
-                button.connect_clicked(move |_| {
-                    dbg!(Rc::strong_count(&mut game_state.clone()));
-                    game_state.clone().replace_with(|x| x.place(r_index, index));
+                button.connect_clicked(move |button| {
+                    dbg!(Rc::strong_count(&game_state.clone()));
+                    button.set_label(match RefCell::borrow(game_state.clone().as_ref()).current {
+                        X => "x",
+                        O => "O",
+                    });
+                    game_state.clone().replace_with(|x| x.place(index,r_index ));
                     dbg!(&game_state);
                     println!("Clicked!");
                 });
@@ -93,14 +97,12 @@ impl GameState {
             current: X,
         }
     }
-    fn test() -> Self {
-        Self {
-            board: [[Some(O); 3]; 3],
-            current: X,
-        }
-    }
     fn place(mut self, x: usize, y: usize) -> Self {
         self.board[x][y] = Some(self.current);
+        self.current = match self.current {
+            X => O,
+            O => X,
+        };
         self
     }
 }
