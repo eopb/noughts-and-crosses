@@ -1,5 +1,6 @@
 use gtk::prelude::*;
 use gtk::{Button, Grid, Window, WindowType};
+use std::convert::TryInto;
 
 fn main() {
     if gtk::init().is_err() {
@@ -8,39 +9,50 @@ fn main() {
     }
 
     let window = Window::new(WindowType::Toplevel);
-    window.set_title("First GTK+ Program");
-    window.set_default_size(350, 70);
-    let button = Button::new_with_label("Click me!");
-    button.set_property_height_request(100);
-    let button1 = Button::new_with_label("Click me1!");
-    button1.set_property_height_request(100);
-    let button2 = Button::new_with_label("Click me2!");
-    button2.set_property_height_request(100);
-    let button3 = Button::new_with_label("Click me3!");
-    button3.set_property_height_request(100);
-    let button4 = Button::new_with_label("Click me4!");
-    button4.set_property_height_request(100);
-    let button5 = Button::new_with_label("Click me5!");
-    button5.set_property_height_request(100);
-    let button6 = Button::new_with_label("Click me6!");
-    button6.set_property_height_request(100);
-    let button7 = Button::new_with_label("Click me7!");
-    button7.set_property_height_request(100);
-    let button8 = Button::new_with_label("Click me8!");
-    button8.set_property_height_request(100);
+    window.set_title("Noughts and crosses GTK");
+    window.set_default_size(350, 350);
+    let button_array = dbg!([
+        [
+            Button::new_with_label("1"),
+            Button::new_with_label(""),
+            Button::new_with_label("2"),
+        ],
+        [
+            Button::new_with_label(""),
+            Button::new_with_label("3"),
+            Button::new_with_label(""),
+        ],
+        [
+            Button::new_with_label("4"),
+            Button::new_with_label(""),
+            Button::new_with_label("5"),
+        ],
+    ]);
+
     let grid = Grid::new();
     grid.insert_column(3);
     grid.insert_row(3);
-    grid.set_column_homogeneous(true);grid.set_row_homogeneous(true);
-    grid.attach(&button, 1, 1, 1, 1);
-    grid.attach(&button1, 1, 2, 1, 1);
-    grid.attach(&button2, 1, 3, 1, 1);
-    grid.attach(&button3, 2, 1, 1, 1);
-    grid.attach(&button4, 2, 2, 1, 1);
-    grid.attach(&button5, 2, 3, 1, 1);
-    grid.attach(&button6, 3, 1, 1, 1);
-    grid.attach(&button7, 3, 2, 1, 1);
-    grid.attach(&button8, 3, 3, 1, 1);
+    grid.set_column_homogeneous(true);
+    grid.set_row_homogeneous(true);
+
+    for (r_index, row) in button_array
+        .iter()
+        .enumerate()
+        .map(|(x, y)| ((x + 1).try_into().unwrap(), y))
+    {
+        for (index, button) in row
+            .iter()
+            .enumerate()
+            .map(|(x, y)| ((x + 1).try_into().unwrap(), y))
+        {
+            grid.attach(button, r_index, index, 1, 1);
+            button.connect_clicked(|button| {
+                button.set_label("x");
+                println!("Clicked!");
+            });
+        }
+    }
+
     window.add(&grid);
 
     window.show_all();
@@ -48,10 +60,6 @@ fn main() {
     window.connect_delete_event(|_, _| {
         gtk::main_quit();
         Inhibit(false)
-    });
-
-    button.connect_clicked(|_| {
-        println!("Clicked!");
     });
 
     gtk::main();
