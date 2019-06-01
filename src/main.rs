@@ -92,7 +92,7 @@ impl GameState {
         }
     }
     fn place(mut self, current_button: &Button, x: usize, y: usize) -> Self {
-        if let None = self.board[x][y] {
+        if self.board[x][y].is_none() {
             current_button.set_label(match self.current {
                 X => "x",
                 O => "O",
