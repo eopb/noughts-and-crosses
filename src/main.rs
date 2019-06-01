@@ -1,7 +1,7 @@
 mod game;
 
 use game::GameState;
-use gtk::{prelude::*, Button, Window};
+use gtk::{prelude::*, Button, Label, Window};
 use std::{cell::RefCell, rc::Rc};
 
 fn main() {
@@ -14,6 +14,8 @@ fn main() {
     let builder = gtk::Builder::new_from_string(glade_src);
 
     let window: Window = builder.get_object("main-window").unwrap();
+
+    let status: Label = builder.get_object("status").unwrap();
 
     let game_state = Rc::new(RefCell::new(GameState::new()));
 
@@ -39,10 +41,11 @@ fn main() {
         for (index, button) in row.iter().enumerate() {
             {
                 let game_state = game_state.clone();
+                let status = status.clone();
                 button.connect_clicked(move |button| {
                     game_state
                         .clone()
-                        .replace_with(|x| x.next(button, r_index, index));
+                        .replace_with(|x| x.next(button, &status, r_index, index));
                     dbg!(&game_state);
                 });
             }

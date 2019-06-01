@@ -1,4 +1,4 @@
-use gtk::{prelude::*, Button, Window};
+use gtk::{prelude::*, Button, Label, Window};
 
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Player {
@@ -6,6 +6,21 @@ pub enum Player {
     O,
 }
 use Player::{O, X};
+
+impl Player {
+    fn show(self) -> &'static str {
+        match self {
+            X => "x",
+            O => "O",
+        }
+    }
+    fn swap(self) -> Self {
+        match self {
+            X => O,
+            O => X,
+        }
+    }
+}
 
 #[derive(Debug, Clone, Copy)]
 pub struct GameState {
@@ -20,21 +35,22 @@ impl GameState {
             current: X,
         }
     }
-    pub fn next(mut self, current_button: &Button, row: usize, column: usize) -> Self {
+    pub fn next(
+        mut self,
+        current_button: &Button,
+        status: &Label,
+        row: usize,
+        column: usize,
+    ) -> Self {
         dbg!(&self.winner());
         if self.board[row][column].is_none() {
-            current_button.set_label(match self.current {
-                X => "x",
-                O => "O",
-            });
+            current_button.set_label(self.current.show());
             self.board[row][column] = Some(self.current);
-            self.current = match self.current {
-                X => O,
-                O => X,
-            };
+            self.current = self.current.swap();
+            status.set_markup(&format!("Player {} turn", self.current.show()));
             self
         } else {
-            println!("Tile already taken.");
+            status.set_markup("Tile already taken.");
             self
         }
     }
