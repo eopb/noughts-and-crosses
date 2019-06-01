@@ -42,12 +42,10 @@ fn main() {
             {
                 let game_state = game_state.clone();
                 button.connect_clicked(move |button| {
-                    dbg!(Rc::strong_count(&game_state.clone()));
                     game_state
                         .clone()
                         .replace_with(|x| x.place(button, index, r_index));
                     dbg!(&game_state);
-                    println!("Clicked!");
                 });
             }
             grid.attach(
