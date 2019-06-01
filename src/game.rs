@@ -37,7 +37,7 @@ impl GameState {
     }
     pub fn next(
         mut self,
-        current_button: &Button,
+        current_button: &Label,
         status: &Label,
         row: usize,
         column: usize,
