@@ -238,6 +238,7 @@ name = "noughts-and-crosses-gtk"
 version = "0.0.1"
 dependencies = [
  "gtk 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "pango 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
