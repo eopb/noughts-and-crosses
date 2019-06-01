@@ -37,8 +37,8 @@ fn main() {
     grid.set_column_homogeneous(true);
     grid.set_row_homogeneous(true);
 
-    for (r_index, row) in button_array.iter().enumerate().map(|(x, y)| ((x), y)) {
-        for (index, button) in row.iter().enumerate().map(|(x, y)| ((x), y)) {
+    for (r_index, row) in button_array.iter().enumerate() {
+        for (index, button) in row.iter().enumerate() {
             {
                 let game_state = game_state.clone();
                 button.connect_clicked(move |button| {
