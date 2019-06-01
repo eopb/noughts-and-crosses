@@ -51,7 +51,7 @@ fn main() {
                         X => "x",
                         O => "O",
                     });
-                    game_state.clone().replace_with(|x| x.place(index,r_index ));
+                    game_state.clone().replace_with(|x| x.place(index, r_index));
                     dbg!(&game_state);
                     println!("Clicked!");
                 });
