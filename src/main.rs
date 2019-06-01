@@ -1,6 +1,5 @@
 mod game;
 
-use game::GameState;
 use gtk::{prelude::*, Button, Label, Window};
 use std::{cell::RefCell, rc::Rc};
 
@@ -18,7 +17,7 @@ fn main() {
 
     let status: Label = builder.get_object("status").unwrap();
 
-    let game_state = Rc::new(RefCell::new(GameState::new()));
+    let game_state = Rc::new(RefCell::new(game::State::new()));
 
     let button_array: [[(Button, Label); 3]; 3] = [
         [

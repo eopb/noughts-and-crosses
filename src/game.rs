@@ -23,12 +23,12 @@ impl Player {
 }
 
 #[derive(Debug, Clone, Copy)]
-pub struct GameState {
+pub struct State {
     board: [[Option<Player>; 3]; 3],
     current: Player,
 }
 
-impl GameState {
+impl State {
     pub fn new() -> Self {
         Self {
             board: [[None; 3]; 3],
@@ -55,7 +55,7 @@ impl GameState {
         }
     }
     pub fn winner(&self) -> Option<Player> {
-        for possible_winner in [O, X].iter() {
+        for possible_winner in &[O, X] {
             for index in 0..3 {
                 if self.board[index].iter().all(|x| match x {
                     Some(x) => x == possible_winner,
