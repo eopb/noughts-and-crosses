@@ -35,10 +35,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -58,10 +57,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -81,10 +79,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -104,10 +101,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -127,10 +123,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -150,10 +145,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -173,10 +167,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -196,10 +189,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
@@ -219,10 +211,9 @@
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel" id="">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes"></property>
                 <attributes>
                   <attribute name="size" value="54300"/>
                 </attributes>
