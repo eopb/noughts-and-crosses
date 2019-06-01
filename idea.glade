@@ -17,7 +17,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">label</property>
+            <property name="label" translatable="yes">Game on</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -27,10 +27,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -40,10 +40,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -53,10 +53,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -66,10 +66,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -79,10 +79,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -92,10 +92,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -105,10 +105,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -118,10 +118,10 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -131,11 +131,11 @@
         </child>
         <child>
           <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="margin_bottom">47</property>
+            <property name="use_stock">True</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
