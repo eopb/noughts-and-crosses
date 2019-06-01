@@ -4,7 +4,7 @@ use game::GameState;
 use gtk::{prelude::*, Button, Label, Window};
 use std::{cell::RefCell, rc::Rc};
 
-const glade_src: &str = include_str!("../idea.glade");
+const GLADE_SRC: &str = include_str!("../idea.glade");
 
 fn main() {
     if gtk::init().is_err() {
@@ -12,7 +12,7 @@ fn main() {
         return;
     }
 
-    let builder = gtk::Builder::new_from_string(glade_src);
+    let builder = gtk::Builder::new_from_string(GLADE_SRC);
 
     let window: Window = builder.get_object("main-window").unwrap();
 

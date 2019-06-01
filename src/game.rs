@@ -1,4 +1,4 @@
-use gtk::{prelude::*, Button, Label, Window};
+use gtk::{prelude::*, Label};
 
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Player {
