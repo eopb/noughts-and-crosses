@@ -34,6 +34,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -47,6 +57,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -60,6 +80,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -73,6 +103,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -86,6 +126,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -99,6 +149,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -112,6 +172,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -125,6 +195,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -138,6 +218,16 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
+            <child>
+              <object class="GtkLabel" id="">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes"></property>
+                <attributes>
+                  <attribute name="size" value="54300"/>
+                </attributes>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">2</property>
