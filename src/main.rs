@@ -1,9 +1,5 @@
-use gtk::prelude::*;
-use gtk::{Button, Grid, Window, WindowType};
-use std::cell::Cell;
-use std::cell::RefCell;
-use std::convert::TryInto;
-use std::rc::Rc;
+use gtk::{prelude::*, Button, Grid, Window, WindowType};
+use std::{cell::RefCell, convert::TryInto, rc::Rc};
 
 fn main() {
     if gtk::init().is_err() {
