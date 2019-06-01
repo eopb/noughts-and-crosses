@@ -29,13 +29,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-1-1">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-1-1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -51,13 +51,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-1-2">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-1-2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -73,13 +73,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-1-3">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-1-3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -95,13 +95,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-2-1">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-2-1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -117,13 +117,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-2-2">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-2-2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -139,13 +139,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-2-3">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-2-3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -161,13 +161,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-3-1">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-3-1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -183,13 +183,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-3-2">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-3-2">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
@@ -205,13 +205,13 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button-3-3">
+          <object class="GtkButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="use_stock">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="button-3-3">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <attributes>
