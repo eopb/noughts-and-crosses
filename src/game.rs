@@ -10,7 +10,7 @@ use Player::{O, X};
 impl Player {
     fn show(self) -> &'static str {
         match self {
-            X => "x",
+            X => "X",
             O => "O",
         }
     }
