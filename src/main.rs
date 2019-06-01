@@ -1,5 +1,5 @@
-use gtk::{prelude::*, Button, Grid, Window, WindowType};
-use std::{cell::RefCell, convert::TryInto, rc::Rc};
+use gtk::{prelude::*, Button, Window};
+use std::{cell::RefCell, rc::Rc};
 
 fn main() {
     if gtk::init().is_err() {
@@ -7,35 +7,30 @@ fn main() {
         return;
     }
 
-    let window = Window::new(WindowType::Toplevel);
-    window.set_title("Noughts and crosses GTK");
-    window.set_default_size(350, 350);
+    let glade_src = include_str!("../idea.glade");
+    let builder = gtk::Builder::new_from_string(glade_src);
+
+    let window: Window = builder.get_object("main-window").unwrap();
 
     let game_state = Rc::new(RefCell::new(GameState::new()));
 
-    let button_array = [
+    let button_array: [[Button; 3]; 3] = [
         [
-            Button::new_with_label(""),
-            Button::new_with_label(""),
-            Button::new_with_label(""),
+            builder.get_object("button-1-1").unwrap(),
+            builder.get_object("button-1-2").unwrap(),
+            builder.get_object("button-1-3").unwrap(),
         ],
         [
-            Button::new_with_label(""),
-            Button::new_with_label(""),
-            Button::new_with_label(""),
+            builder.get_object("button-2-1").unwrap(),
+            builder.get_object("button-2-2").unwrap(),
+            builder.get_object("button-2-3").unwrap(),
         ],
         [
-            Button::new_with_label(""),
-            Button::new_with_label(""),
-            Button::new_with_label(""),
+            builder.get_object("button-3-1").unwrap(),
+            builder.get_object("button-3-2").unwrap(),
+            builder.get_object("button-3-3").unwrap(),
         ],
     ];
-
-    let grid = Grid::new();
-    grid.insert_column(3);
-    grid.insert_row(3);
-    grid.set_column_homogeneous(true);
-    grid.set_row_homogeneous(true);
 
     for (r_index, row) in button_array.iter().enumerate() {
         for (index, button) in row.iter().enumerate() {
@@ -48,16 +43,8 @@ fn main() {
                     dbg!(&game_state);
                 });
             }
-            grid.attach(
-                button,
-                (r_index + 1).try_into().unwrap(),
-                (index + 1).try_into().unwrap(),
-                1,
-                1,
-            );
         }
     }
-    window.add(&grid);
 
     window.show_all();
 
