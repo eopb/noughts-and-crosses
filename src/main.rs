@@ -1,3 +1,6 @@
+mod game;
+
+use game::GameState;
 use gtk::{prelude::*, Button, Window};
 use std::{cell::RefCell, rc::Rc};
 
@@ -39,7 +42,7 @@ fn main() {
                 button.connect_clicked(move |button| {
                     game_state
                         .clone()
-                        .replace_with(|x| x.place(button, index, r_index));
+                        .replace_with(|x| x.next(button, r_index, index));
                     dbg!(&game_state);
                 });
             }
@@ -54,43 +57,4 @@ fn main() {
     });
 
     gtk::main();
-}
-
-#[derive(Copy, Clone, Debug)]
-enum Player {
-    X,
-    O,
-}
-use Player::{O, X};
-
-#[derive(Debug, Clone, Copy)]
-struct GameState {
-    board: [[Option<Player>; 3]; 3],
-    current: Player,
-}
-
-impl GameState {
-    fn new() -> Self {
-        Self {
-            board: [[None; 3]; 3],
-            current: X,
-        }
-    }
-    fn place(mut self, current_button: &Button, x: usize, y: usize) -> Self {
-        if self.board[x][y].is_none() {
-            current_button.set_label(match self.current {
-                X => "x",
-                O => "O",
-            });
-            self.board[x][y] = Some(self.current);
-            self.current = match self.current {
-                X => O,
-                O => X,
-            };
-            self
-        } else {
-            println!("Tile already taken.");
-            self
-        }
-    }
 }
