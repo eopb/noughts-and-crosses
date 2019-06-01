@@ -43,11 +43,9 @@ fn main() {
                 let game_state = game_state.clone();
                 button.connect_clicked(move |button| {
                     dbg!(Rc::strong_count(&game_state.clone()));
-                    button.set_label(match RefCell::borrow(game_state.clone().as_ref()).current {
-                        X => "x",
-                        O => "O",
-                    });
-                    game_state.clone().replace_with(|x| x.place(index, r_index));
+                    game_state
+                        .clone()
+                        .replace_with(|x| x.place(button, index, r_index));
                     dbg!(&game_state);
                     println!("Clicked!");
                 });
@@ -93,12 +91,21 @@ impl GameState {
             current: X,
         }
     }
-    fn place(mut self, x: usize, y: usize) -> Self {
-        self.board[x][y] = Some(self.current);
-        self.current = match self.current {
-            X => O,
-            O => X,
-        };
-        self
+    fn place(mut self, current_button: &Button, x: usize, y: usize) -> Self {
+        if let None = self.board[x][y] {
+            current_button.set_label(match self.current {
+                X => "x",
+                O => "O",
+            });
+            self.board[x][y] = Some(self.current);
+            self.current = match self.current {
+                X => O,
+                O => X,
+            };
+            self
+        } else {
+            println!("Tile already taken.");
+            self
+        }
     }
 }
