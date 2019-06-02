@@ -5,6 +5,8 @@ use std::{cell::RefCell, rc::Rc};
 
 const GLADE_SRC: &str = include_str!("../idea.glade");
 
+const CSS: &str = include_str!("style.css");
+
 fn main() {
     if gtk::init().is_err() {
         println!("Failed to initialize GTK.");
@@ -78,6 +80,12 @@ fn main() {
             }
         }
     }
+
+    let screen = window.get_screen().unwrap();
+    let style = gtk::CssProvider::new();
+    let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
+    dbg!(CSS);
+    gtk::StyleContext::add_provider_for_screen(&screen, &style, gtk::STYLE_PROVIDER_PRIORITY_USER);
 
     window.show_all();
 
