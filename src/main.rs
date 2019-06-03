@@ -16,6 +16,7 @@ fn main() {
     let builder = gtk::Builder::new_from_string(GLADE_SRC);
 
     let window: Window = builder.get_object("main-window").unwrap();
+    let restart_button: Button = builder.get_object("restart").unwrap();
 
     let status: Label = builder.get_object("status").unwrap();
 
@@ -79,6 +80,14 @@ fn main() {
                 });
             }
         }
+    }
+
+    {
+        let game_state = game_state.clone();
+        restart_button.connect_clicked(move |_| {
+            button_array.iter().flatten().map(|x| x.1.clone()).for_each(|x| x.set_label(""));
+            game_state.clone().replace_with(|_| game::State::new());
+        });
     }
 
     let screen = window.get_screen().unwrap();
