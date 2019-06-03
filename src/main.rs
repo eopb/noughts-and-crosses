@@ -81,15 +81,17 @@ fn main() {
             }
         }
     }
-
     {
         let game_state = game_state.clone();
         restart_button.connect_clicked(move |_| {
-            button_array.iter().flatten().map(|x| x.1.clone()).for_each(|x| x.set_label(""));
-            game_state.clone().replace_with(|_| game::State::new());
+            button_array
+                .iter()
+                .flatten()
+                .map(|x| x.1.clone())
+                .for_each(|x| x.set_label(""));
+            game_state.replace_with(|_| game::State::new());
         });
     }
-
     let screen = window.get_screen().unwrap();
     let style = gtk::CssProvider::new();
     let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
