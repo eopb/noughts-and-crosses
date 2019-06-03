@@ -3,9 +3,9 @@ mod game;
 use gtk::{prelude::*, Button, Label, Window};
 use std::{cell::RefCell, rc::Rc};
 
-const GLADE_SRC: &str = include_str!("../idea.glade");
+const GLADE_SRC: &str = include_str!("../ui/ui.glade");
 
-const CSS: &str = include_str!("style.css");
+const CSS: &str = include_str!("../ui/style.css");
 
 fn main() {
     if gtk::init().is_err() {
