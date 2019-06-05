@@ -1,6 +1,6 @@
 # Noughts and Crosses GTK
 
-<img align="right" width="100" src="logo.png">
+<img align="right" width="30%" src="logo.png">
 
 [![pipeline status](https://gitlab.com/efunb/noughts-and-crosses/badges/stable/pipeline.svg)](https://gitlab.com/efunb/noughts-and-crosses/commits/stable)
 [![License](https://img.shields.io/crates/l/noughts-and-crosses.svg)](https://crates.io/crates/noughts-and-crosses)
@@ -10,6 +10,7 @@
 My attempt at making a well designed game using GTK.
 
 [![YouTube Video](https://img.youtube.com/vi/C-Wb95_rKHo/0.jpg)](https://www.youtube.com/watch?v=C-Wb95_rKHo)
+
 
 ## How to install
 
