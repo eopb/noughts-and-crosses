@@ -49,7 +49,7 @@ impl State {
             current_button.set_label(self.current.show());
             self.board[row][column] = Some(self.current);
             self.current = self.current.swap();
-            match dbg!(&self.winner(all_buttons)) {
+            match &self.winner(all_buttons) {
                 Some(player) => {
                     self.end = true;
                     status.set_markup(&format!("Player {} WINS!", player.show()))

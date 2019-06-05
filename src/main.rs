@@ -77,7 +77,7 @@ fn main() {
                     game_state
                         .clone()
                         .replace_with(|x| x.next(&label, &button_array, &status, r_index, index));
-                    dbg!(&game_state);
+                    
                 });
             }
         }
@@ -100,7 +100,6 @@ fn main() {
     let screen = window.get_screen().unwrap();
     let style = gtk::CssProvider::new();
     let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
-    dbg!(CSS);
     gtk::StyleContext::add_provider_for_screen(&screen, &style, gtk::STYLE_PROVIDER_PRIORITY_USER);
 
     window.show_all();
