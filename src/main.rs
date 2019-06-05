@@ -88,8 +88,7 @@ fn main() {
         restart_button.connect_clicked(move |_| {
             button_array
                 .iter()
-                .flatten()
-                .map(|x| x.clone())
+                .flatten().cloned()
                 .for_each(|(button,label)| {
                     label.set_label("");
                     button.get_style_context().remove_class("won")

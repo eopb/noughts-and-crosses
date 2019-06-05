@@ -87,7 +87,7 @@ impl State {
                 .map(|(x, y)| self.board[*x][*y])
                 .all(|x| x == Some(*possible_winner))
             {
-                for check in checks.iter() {
+                for check in &checks {
                     all_buttons[check.0][check.1]
                         .0
                         .get_style_context()
