@@ -66,10 +66,7 @@ fn main() {
         });
     }
 
-    let screen = window.get_screen().unwrap();
-    let style = gtk::CssProvider::new();
-    let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
-    gtk::StyleContext::add_provider_for_screen(&screen, &style, gtk::STYLE_PROVIDER_PRIORITY_USER);
+    apply_css(&window);
 
     window.show_all();
 
@@ -105,4 +102,11 @@ fn get_button_array(builder: gtk::Builder) -> ButtonArray {
             get_button_with_label("3-3"),
         ],
     ]
+}
+
+fn apply_css(window: &Window) {
+    let screen = window.get_screen().unwrap();
+    let style = gtk::CssProvider::new();
+    let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
+    gtk::StyleContext::add_provider_for_screen(&screen, &style, gtk::STYLE_PROVIDER_PRIORITY_USER);
 }
