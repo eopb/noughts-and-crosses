@@ -15,6 +15,7 @@ Run
 
 ```
 cargo install noughts-and-crosses
+noughts-and-crosses
 ```
 
 with cargo installed

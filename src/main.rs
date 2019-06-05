@@ -53,10 +53,18 @@ fn main() {
                 let status = status.clone();
                 let label = (*button).1.clone();
                 let button_array = button_array.clone();
+                let restart_button = restart_button.clone();
                 (*button).0.connect_clicked(move |_| {
-                    game_state
-                        .clone()
-                        .replace_with(|x| x.next(&label, &button_array, &status, r_index, index));
+                    game_state.clone().replace_with(|x| {
+                        x.next(
+                            &label,
+                            &button_array,
+                            &status,
+                            &restart_button,
+                            r_index,
+                            index,
+                        )
+                    });
                 });
             }
         }
@@ -64,7 +72,7 @@ fn main() {
     {
         let game_state = game_state.clone();
         let status = status.clone();
-        restart_button.connect_clicked(move |_| {
+        restart_button.connect_clicked(move |bself| {
             button_array
                 .iter()
                 .flatten()
@@ -74,6 +82,7 @@ fn main() {
                     button.get_style_context().remove_class("won")
                 });
             game_state.replace_with(|_| game::State::new());
+            bself.get_style_context().remove_class("should-restart");
             status.set_label("Game on");
         });
     }
