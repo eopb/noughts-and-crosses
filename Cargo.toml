@@ -12,6 +12,7 @@ My attempt at making a well designed game using GTK.
 """
 
 [dependencies]
+gdk-pixbuf = "0.6.0"
 pango = "0.6"
 [dependencies.gtk]
 version = "0.6.0"

@@ -237,6 +237,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "noughts-and-crosses"
 version = "0.0.3"
 dependencies = [
+ "gdk-pixbuf 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "gtk 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "pango 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
