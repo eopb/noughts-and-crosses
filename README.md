@@ -9,7 +9,7 @@
 
 My attempt at making a well designed game using GTK.
 
-<iframe align="center" width="560" height="315" src="https://www.youtube.com/embed/C-Wb95_rKHo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![YouTube Video](https://img.youtube.com/vi/C-Wb95_rKHo/0.jpg)](https://www.youtube.com/watch?v=C-Wb95_rKHo)
 
 ## How to install
 
