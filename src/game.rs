@@ -1,4 +1,5 @@
-use gtk::{prelude::*, Button, Label};
+use crate::ButtonArray;
+use gtk::{prelude::*};
 
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Player {
@@ -39,10 +40,10 @@ impl State {
     }
     pub fn next(
         mut self,
-        current_button: &Label,
-        all_buttons: &[[(Button, Label); 3]; 3],
-        status: &Label,
-        restart_button: &Button,
+        current_button: &gtk::Label,
+        all_buttons: &ButtonArray,
+        status: &gtk::Label,
+        restart_button: &gtk::Button,
         row: usize,
         column: usize,
     ) -> Self {
@@ -66,11 +67,7 @@ impl State {
             self
         }
     }
-    pub fn winner(
-        &self,
-        all_buttons: &[[(Button, Label); 3]; 3],
-        restart_button: &Button,
-    ) -> Option<Player> {
+    pub fn winner(&self, all_buttons: &ButtonArray, restart_button: &gtk::Button) -> Option<Player> {
         let check = |x| self.check(x, all_buttons, restart_button);
         check([(0, 0), (1, 0), (2, 0)])
             .or_else(|| check([(0, 1), (1, 1), (2, 1)]))
@@ -84,8 +81,8 @@ impl State {
     fn check(
         &self,
         checks: [(usize, usize); 3],
-        all_buttons: &[[(Button, Label); 3]; 3],
-        restart_button: &Button,
+        all_buttons: &ButtonArray,
+        restart_button: &gtk::Button,
     ) -> Option<Player> {
         for possible_winner in &[O, X] {
             if checks
