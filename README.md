@@ -14,7 +14,7 @@ My attempt at making a well designed game using GTK.
 Run
 
 ```
-apt-get install libgtk-3-dev -y
+sudo apt-get install libgtk-3-dev -y
 cargo install noughts-and-crosses
 noughts-and-crosses
 ```
