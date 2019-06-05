@@ -5,7 +5,7 @@ authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
 edition = "2018"
-documentation = "https://docs.rs/noughts-and-crosses/"
+documentation = "https://gitlab.com/efunb/noughts-and-crosses/blob/master/README.md"
 repository = "https://gitlab.com/efunb/noughts-and-crosses"
 description = """
 My attempt at making a well designed game using GTK.
