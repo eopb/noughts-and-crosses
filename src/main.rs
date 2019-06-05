@@ -77,7 +77,6 @@ fn main() {
                     game_state
                         .clone()
                         .replace_with(|x| x.next(&label, &button_array, &status, r_index, index));
-                    
                 });
             }
         }
@@ -88,8 +87,9 @@ fn main() {
         restart_button.connect_clicked(move |_| {
             button_array
                 .iter()
-                .flatten().cloned()
-                .for_each(|(button,label)| {
+                .flatten()
+                .cloned()
+                .for_each(|(button, label)| {
                     label.set_label("");
                     button.get_style_context().remove_class("won")
                 });
