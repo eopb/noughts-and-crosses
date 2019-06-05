@@ -1,3 +1,3 @@
 # noughts-and-crosses-gtk
 
-![](logo.svg)
+<img style="width: 100px; float: right;" src="logo.svg">
