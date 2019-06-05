@@ -20,9 +20,13 @@ fn main() {
 
     let about_button: gtk::Button = builder.get_object("about-button").unwrap();
     let about_window: gtk::Window = builder.get_object("about-window").unwrap();
-about_button.connect_clicked(move |_| {
-        about_window.show_all();
-    });
+    {
+        let about_window = about_window.clone();
+        about_button.connect_clicked(move |_| {
+            about_window.show_all();
+        });
+    }
+    about_window.connect_delete_event(|x, _| Inhibit(x.hide_on_delete()));
 
     let restart_button: gtk::Button = builder.get_object("restart").unwrap();
 
