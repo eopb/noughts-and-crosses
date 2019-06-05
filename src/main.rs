@@ -23,7 +23,7 @@ fn main() {
 
     let game_state = Rc::new(RefCell::new(game::State::new()));
 
-    let button_array = get_button_array(builder);
+    let button_array = get_button_array(&builder);
 
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (index, button) in row.iter().enumerate() {
@@ -78,7 +78,7 @@ fn main() {
     gtk::main();
 }
 
-fn get_button_array(builder: gtk::Builder) -> ButtonArray {
+fn get_button_array(builder: &gtk::Builder) -> ButtonArray {
     let get_button_with_label = |x| {
         (
             builder.get_object(&format!("button-{}", x)).unwrap(),
