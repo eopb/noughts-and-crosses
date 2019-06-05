@@ -56,7 +56,15 @@ impl State {
         }
     }
     pub fn winner(&self, all_buttons: &[[(Button, Label); 3]; 3]) -> Option<Player> {
-        self.check([(0, 0), (1, 0), (2, 0)], all_buttons)
+        let check = |x| self.check(x, all_buttons);
+        check([(0, 0), (1, 0), (2, 0)])
+            .or_else(|| check([(0, 1), (1, 1), (2, 1)]))
+            .or_else(|| check([(0, 2), (1, 2), (2, 2)]))
+            .or_else(|| check([(0, 0), (0, 1), (0, 2)]))
+            .or_else(|| check([(1, 0), (1, 1), (1, 2)]))
+            .or_else(|| check([(2, 0), (2, 1), (2, 2)]))
+            .or_else(|| check([(0, 0), (1, 1), (2, 2)]))
+            .or_else(|| check([(2, 0), (1, 1), (0, 2)]))
     }
     fn check(
         &self,
@@ -70,7 +78,10 @@ impl State {
                 .all(|x| x == Some(*possible_winner))
             {
                 for check in checks.iter() {
-                    all_buttons[check.0][check.1].0.get_style_context().add_class("won");
+                    all_buttons[check.0][check.1]
+                        .0
+                        .get_style_context()
+                        .add_class("won");
                 }
                 return Some(*possible_winner);
             }
