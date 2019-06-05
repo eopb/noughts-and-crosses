@@ -1,6 +1,6 @@
 [package]
 name = "noughts-and-crosses"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
@@ -12,6 +12,7 @@ My attempt at making a well designed game using GTK.
 """
 
 [dependencies]
+gdk-pixbuf = "0.6.0"
 pango = "0.6"
 [dependencies.gtk]
 version = "0.6.0"

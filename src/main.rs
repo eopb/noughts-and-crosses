@@ -17,6 +17,17 @@ fn main() {
     let builder = gtk::Builder::new_from_string(GLADE_SRC);
 
     let window: gtk::Window = builder.get_object("main-window").unwrap();
+
+    let about_button: gtk::Button = builder.get_object("about-button").unwrap();
+    let about_window: gtk::Window = builder.get_object("about-window").unwrap();
+    {
+        let about_window = about_window.clone();
+        about_button.connect_clicked(move |_| {
+            about_window.show_all();
+        });
+    }
+    about_window.connect_delete_event(|x, _| Inhibit(x.hide_on_delete()));
+
     let restart_button: gtk::Button = builder.get_object("restart").unwrap();
 
     let status: gtk::Label = builder.get_object("status").unwrap();
@@ -24,6 +35,8 @@ fn main() {
     let game_state = Rc::new(RefCell::new(game::State::new()));
 
     let button_array = get_button_array(&builder);
+
+    // window.set_icon_from_file("logo.svg").unwrap();
 
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
