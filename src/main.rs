@@ -22,48 +22,28 @@ fn main() {
 
     let game_state = Rc::new(RefCell::new(game::State::new()));
 
+    let get_button_with_label = |x| {
+        (
+            builder.get_object(&format!("button-{}", x)).unwrap(),
+            builder.get_object(&format!("label-{}", x)).unwrap(),
+        )
+    };
+
     let button_array: [[(Button, Label); 3]; 3] = [
         [
-            (
-                builder.get_object("button-1-1").unwrap(),
-                builder.get_object("label-1-1").unwrap(),
-            ),
-            (
-                builder.get_object("button-1-2").unwrap(),
-                builder.get_object("label-1-2").unwrap(),
-            ),
-            (
-                builder.get_object("button-1-3").unwrap(),
-                builder.get_object("label-1-3").unwrap(),
-            ),
+            get_button_with_label("1-1"),
+            get_button_with_label("1-2"),
+            get_button_with_label("1-3"),
         ],
         [
-            (
-                builder.get_object("button-2-1").unwrap(),
-                builder.get_object("label-2-1").unwrap(),
-            ),
-            (
-                builder.get_object("button-2-2").unwrap(),
-                builder.get_object("label-2-2").unwrap(),
-            ),
-            (
-                builder.get_object("button-2-3").unwrap(),
-                builder.get_object("label-2-3").unwrap(),
-            ),
+            get_button_with_label("2-1"),
+            get_button_with_label("2-2"),
+            get_button_with_label("2-3"),
         ],
         [
-            (
-                builder.get_object("button-3-1").unwrap(),
-                builder.get_object("label-3-1").unwrap(),
-            ),
-            (
-                builder.get_object("button-3-2").unwrap(),
-                builder.get_object("label-3-2").unwrap(),
-            ),
-            (
-                builder.get_object("button-3-3").unwrap(),
-                builder.get_object("label-3-3").unwrap(),
-            ),
+            get_button_with_label("3-1"),
+            get_button_with_label("3-2"),
+            get_button_with_label("3-3"),
         ],
     ];
     for (r_index, row) in button_array.clone().iter().enumerate() {
@@ -97,6 +77,7 @@ fn main() {
             status.set_label("Game on");
         });
     }
+
     let screen = window.get_screen().unwrap();
     let style = gtk::CssProvider::new();
     let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
