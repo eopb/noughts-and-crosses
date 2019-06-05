@@ -1,12 +1,12 @@
 mod game;
 
-use gtk::{prelude::*, Button, Label, Window};
+use gtk::{prelude::*};
 use std::{cell::RefCell, rc::Rc};
 
 const GLADE_SRC: &str = include_str!("../ui/ui.glade");
 const CSS: &str = include_str!("../ui/style.css");
 
-type ButtonArray = [[(Button, Label); 3]; 3];
+type ButtonArray = [[(gtk::Button, gtk::Label); 3]; 3];
 
 fn main() {
     if gtk::init().is_err() {
@@ -16,17 +16,17 @@ fn main() {
 
     let builder = gtk::Builder::new_from_string(GLADE_SRC);
 
-    let window: Window = builder.get_object("main-window").unwrap();
-    let restart_button: Button = builder.get_object("restart").unwrap();
+    let window: gtk::Window = builder.get_object("main-window").unwrap();
+    let restart_button: gtk::Button = builder.get_object("restart").unwrap();
 
-    let status: Label = builder.get_object("status").unwrap();
+    let status: gtk::Label = builder.get_object("status").unwrap();
 
     let game_state = Rc::new(RefCell::new(game::State::new()));
 
     let button_array = get_button_array(&builder);
 
     for (r_index, row) in button_array.clone().iter().enumerate() {
-        for (index, button) in row.iter().enumerate() {
+        for (c_index, button) in row.iter().enumerate() {
             {
                 let game_state = game_state.clone();
                 let status = status.clone();
@@ -41,7 +41,7 @@ fn main() {
                             &status,
                             &restart_button,
                             r_index,
-                            index,
+                            c_index,
                         )
                     });
                 });
@@ -104,7 +104,7 @@ fn get_button_array(builder: &gtk::Builder) -> ButtonArray {
     ]
 }
 
-fn apply_css(window: &Window) {
+fn apply_css(window: &gtk::Window) {
     let screen = window.get_screen().unwrap();
     let style = gtk::CssProvider::new();
     let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
