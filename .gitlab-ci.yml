@@ -57,6 +57,8 @@ linux-optimized:
 cratesio:
   stage: publish
   script:
+    - apt-get update
+    - apt-get install libgtk-3-dev -y
     - rm -r -f files
     - cargo login $CARGO_LOGIN
     - cargo package
