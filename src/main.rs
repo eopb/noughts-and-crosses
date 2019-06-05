@@ -4,8 +4,9 @@ use gtk::{prelude::*, Button, Label, Window};
 use std::{cell::RefCell, rc::Rc};
 
 const GLADE_SRC: &str = include_str!("../ui/ui.glade");
-
 const CSS: &str = include_str!("../ui/style.css");
+
+type ButtonArray = [[(Button, Label); 3]; 3];
 
 fn main() {
     if gtk::init().is_err() {
@@ -22,30 +23,8 @@ fn main() {
 
     let game_state = Rc::new(RefCell::new(game::State::new()));
 
-    let get_button_with_label = |x| {
-        (
-            builder.get_object(&format!("button-{}", x)).unwrap(),
-            builder.get_object(&format!("label-{}", x)).unwrap(),
-        )
-    };
+    let button_array = get_button_array(builder);
 
-    let button_array: [[(Button, Label); 3]; 3] = [
-        [
-            get_button_with_label("1-1"),
-            get_button_with_label("1-2"),
-            get_button_with_label("1-3"),
-        ],
-        [
-            get_button_with_label("2-1"),
-            get_button_with_label("2-2"),
-            get_button_with_label("2-3"),
-        ],
-        [
-            get_button_with_label("3-1"),
-            get_button_with_label("3-2"),
-            get_button_with_label("3-3"),
-        ],
-    ];
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (index, button) in row.iter().enumerate() {
             {
@@ -100,4 +79,30 @@ fn main() {
     });
 
     gtk::main();
+}
+
+fn get_button_array(builder: gtk::Builder) -> ButtonArray {
+    let get_button_with_label = |x| {
+        (
+            builder.get_object(&format!("button-{}", x)).unwrap(),
+            builder.get_object(&format!("label-{}", x)).unwrap(),
+        )
+    };
+    [
+        [
+            get_button_with_label("1-1"),
+            get_button_with_label("1-2"),
+            get_button_with_label("1-3"),
+        ],
+        [
+            get_button_with_label("2-1"),
+            get_button_with_label("2-2"),
+            get_button_with_label("2-3"),
+        ],
+        [
+            get_button_with_label("3-1"),
+            get_button_with_label("3-2"),
+            get_button_with_label("3-3"),
+        ],
+    ]
 }
