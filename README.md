@@ -9,6 +9,8 @@
 
 My attempt at making a well designed game using GTK.
 
+<iframe align="center" width="560" height="315" src="https://www.youtube.com/embed/C-Wb95_rKHo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## How to install
 
 Run
