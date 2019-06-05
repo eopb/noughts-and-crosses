@@ -1,12 +1,12 @@
 [package]
-name = "noughts-and-crosses-gtk"
+name = "noughts-and-crosses"
 version = "0.0.1"
 authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
 license = "MIT/Apache-2.0"
 readme = "README.md"
 edition = "2018"
-documentation = "https://docs.rs/noughts-and-crosses-gtk/"
-repository = "https://gitlab.com/efunb/noughts-and-crosses-gtk"
+documentation = "https://docs.rs/noughts-and-crosses/"
+repository = "https://gitlab.com/efunb/noughts-and-crosses"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
