@@ -58,7 +58,7 @@ impl State {
             };
             self
         } else if self.end {
-            status.set_markup("Game already ended. Press restart.");
+            status.set_markup("Game has ended. Press restart.");
             self
         } else {
             status.set_markup("Tile already taken.");

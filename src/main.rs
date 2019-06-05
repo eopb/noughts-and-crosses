@@ -25,7 +25,7 @@ fn main() {
     let button_array: [[(Button, Label); 3]; 3] = [
         [
             (
-                builder.get_object("button-1-1").expect("test"),
+                builder.get_object("button-1-1").unwrap(),
                 builder.get_object("label-1-1").unwrap(),
             ),
             (

@@ -5,8 +5,8 @@
   <object class="GtkWindow" id="main-window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Noughts and crosses GTK</property>
-    <property name="default_width">500</property>
-    <property name="default_height">500</property>
+    <property name="default_width">600</property>
+    <property name="default_height">600</property>
     <child type="titlebar">
       <object class="GtkHeaderBar">
         <property name="visible">True</property>
@@ -65,6 +65,9 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="label" translatable="yes">Game on</property>
+            <attributes>
+              <attribute name="size" value="30000"/>
+            </attributes>
           </object>
           <packing>
             <property name="left_attach">0</property>
