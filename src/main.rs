@@ -8,6 +8,13 @@ const CSS: &str = include_str!("../ui/style.css");
 
 type ButtonArray = [[(gtk::Button, gtk::Label); 3]; 3];
 
+
+macro_rules! shadow_clone {
+    ($to_clone:ident) => {
+        let $to_clone = $to_clone.clone();
+    };
+}
+
 fn main() {
     if gtk::init().is_err() {
         println!("Failed to initialize GTK.");
@@ -41,7 +48,7 @@ fn main() {
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             {
-                let game_state = game_state.clone();
+                shadow_clone!(game_state);
                 let status = status.clone();
                 let label = (*button).1.clone();
                 let button_array = button_array.clone();
@@ -62,7 +69,7 @@ fn main() {
         }
     }
     {
-        let game_state = game_state.clone();
+        shadow_clone!(game_state);
         let status = status.clone();
         restart_button.connect_clicked(move |bself| {
             button_array
