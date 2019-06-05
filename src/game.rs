@@ -42,6 +42,7 @@ impl State {
         current_button: &Label,
         all_buttons: &[[(Button, Label); 3]; 3],
         status: &Label,
+        restart_button: &Button,
         row: usize,
         column: usize,
     ) -> Self {
@@ -49,7 +50,7 @@ impl State {
             current_button.set_label(self.current.show());
             self.board[row][column] = Some(self.current);
             self.current = self.current.swap();
-            match &self.winner(all_buttons) {
+            match &self.winner(all_buttons, restart_button) {
                 Some(player) => {
                     self.end = true;
                     status.set_markup(&format!("Player {} WINS!", player.show()))
@@ -65,8 +66,12 @@ impl State {
             self
         }
     }
-    pub fn winner(&self, all_buttons: &[[(Button, Label); 3]; 3]) -> Option<Player> {
-        let check = |x| self.check(x, all_buttons);
+    pub fn winner(
+        &self,
+        all_buttons: &[[(Button, Label); 3]; 3],
+        restart_button: &Button,
+    ) -> Option<Player> {
+        let check = |x| self.check(x, all_buttons, restart_button);
         check([(0, 0), (1, 0), (2, 0)])
             .or_else(|| check([(0, 1), (1, 1), (2, 1)]))
             .or_else(|| check([(0, 2), (1, 2), (2, 2)]))
@@ -80,6 +85,7 @@ impl State {
         &self,
         checks: [(usize, usize); 3],
         all_buttons: &[[(Button, Label); 3]; 3],
+        restart_button: &Button,
     ) -> Option<Player> {
         for possible_winner in &[O, X] {
             if checks
@@ -93,6 +99,9 @@ impl State {
                         .get_style_context()
                         .add_class("won");
                 }
+                restart_button
+                    .get_style_context()
+                    .add_class("should-restart");
                 return Some(*possible_winner);
             }
         }
