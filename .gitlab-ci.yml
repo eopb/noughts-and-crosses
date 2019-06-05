@@ -6,6 +6,7 @@ stages:
   - check
   - test
   - publish
+  - deploy
   - post-run
 
 
@@ -38,6 +39,20 @@ benchmarktests:
     - apt-get install libgtk-3-dev -y
     - cargo bench
 
+linux-optimized:
+  stage: deploy
+  script:
+    - apt-get update
+    - apt-get install libgtk-3-dev -y
+    - cargo build --release
+    - rm -r -f files
+    - mkdir files
+    - cp target/release/noughts-and-crosses files
+  when: on_success
+  artifacts:
+    paths:
+      - files
+    expire_in: 2 weeks
 
 cratesio:
   stage: publish
