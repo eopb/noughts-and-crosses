@@ -2,13 +2,19 @@ grid button {
     text-shadow: 1px 1px 5px black;
     box-shadow: 0px 0px 5px black;
     border: 1px solid black;
-    transition: 2s;
+    transition: 0.4s;
+    background: white;
 }
 
 grid button:hover {
-    background: green;
+    background: #a0e1aa;
 }
 
 button.won {
-    background: red;
+    background: #630000;
+    color: white;
+}
+
+button.won:hover {
+    background: #630000;
 }

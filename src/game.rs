@@ -26,6 +26,7 @@ impl Player {
 pub struct State {
     board: [[Option<Player>; 3]; 3],
     current: Player,
+    end: bool,
 }
 
 impl State {
@@ -33,6 +34,7 @@ impl State {
         Self {
             board: [[None; 3]; 3],
             current: X,
+            end: false,
         }
     }
     pub fn next(
@@ -43,12 +45,20 @@ impl State {
         row: usize,
         column: usize,
     ) -> Self {
-        dbg!(&self.winner(all_buttons));
-        if self.board[row][column].is_none() {
+        if self.board[row][column].is_none() && !self.end {
             current_button.set_label(self.current.show());
             self.board[row][column] = Some(self.current);
             self.current = self.current.swap();
-            status.set_markup(&format!("Player {} turn", self.current.show()));
+            match dbg!(&self.winner(all_buttons)) {
+                Some(player) => {
+                    self.end = true;
+                    status.set_markup(&format!("Player {} WINS!", player.show()))
+                }
+                None => status.set_markup(&format!("Player {} turn", self.current.show())),
+            };
+            self
+        } else if self.end {
+            status.set_markup("Game already ended. Press restart.");
             self
         } else {
             status.set_markup("Tile already taken.");

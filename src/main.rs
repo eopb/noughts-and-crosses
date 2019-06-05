@@ -84,13 +84,18 @@ fn main() {
     }
     {
         let game_state = game_state.clone();
+        let status = status.clone();
         restart_button.connect_clicked(move |_| {
             button_array
                 .iter()
                 .flatten()
-                .map(|x| x.1.clone())
-                .for_each(|x| x.set_label(""));
+                .map(|x| x.clone())
+                .for_each(|(button,label)| {
+                    label.set_label("");
+                    button.get_style_context().remove_class("won")
+                });
             game_state.replace_with(|_| game::State::new());
+            status.set_label("Game on");
         });
     }
     let screen = window.get_screen().unwrap();
