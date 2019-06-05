@@ -1,6 +1,6 @@
 # Noughts and Crosses GTK
 
-<img align="right" width="135" src="logo.png">
+<img align="right" width="135" style="box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);" src="logo.png">
 
 [![pipeline status](https://gitlab.com/efunb/noughts-and-crosses/badges/stable/pipeline.svg)](https://gitlab.com/efunb/noughts-and-crosses/commits/stable)
 [![License](https://img.shields.io/crates/l/noughts-and-crosses.svg)](https://crates.io/crates/noughts-and-crosses)
