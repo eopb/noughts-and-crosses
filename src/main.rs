@@ -1,6 +1,6 @@
 mod game;
 
-use gtk::{prelude::*};
+use gtk::prelude::*;
 use std::{cell::RefCell, rc::Rc};
 
 const GLADE_SRC: &str = include_str!("../ui/ui.glade");
