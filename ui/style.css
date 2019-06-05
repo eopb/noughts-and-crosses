@@ -8,3 +8,7 @@ grid button {
 grid button:hover {
     background: green;
 }
+
+button.won {
+    background: red;
+}

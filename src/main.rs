@@ -66,16 +66,17 @@ fn main() {
             ),
         ],
     ];
-    for (r_index, row) in button_array.iter().enumerate() {
+    for (r_index, row) in button_array.clone().iter().enumerate() {
         for (index, button) in row.iter().enumerate() {
             {
                 let game_state = game_state.clone();
                 let status = status.clone();
                 let label = (*button).1.clone();
+                let button_array = button_array.clone();
                 (*button).0.connect_clicked(move |_| {
                     game_state
                         .clone()
-                        .replace_with(|x| x.next(&label, &status, r_index, index));
+                        .replace_with(|x| x.next(&label, &button_array, &status, r_index, index));
                     dbg!(&game_state);
                 });
             }

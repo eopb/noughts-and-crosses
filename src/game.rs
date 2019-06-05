@@ -1,4 +1,4 @@
-use gtk::{prelude::*, Label};
+use gtk::{prelude::*, Button, Label};
 
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub enum Player {
@@ -38,11 +38,12 @@ impl State {
     pub fn next(
         mut self,
         current_button: &Label,
+        all_buttons: &[[(Button, Label); 3]; 3],
         status: &Label,
         row: usize,
         column: usize,
     ) -> Self {
-        dbg!(&self.winner());
+        dbg!(&self.winner(all_buttons));
         if self.board[row][column].is_none() {
             current_button.set_label(self.current.show());
             self.board[row][column] = Some(self.current);
@@ -54,15 +55,24 @@ impl State {
             self
         }
     }
-    pub fn winner(&self) -> Option<Player> {
+    pub fn winner(&self, all_buttons: &[[(Button, Label); 3]; 3]) -> Option<Player> {
+        self.check([(0, 0), (1, 0), (2, 0)], all_buttons)
+    }
+    fn check(
+        &self,
+        checks: [(usize, usize); 3],
+        all_buttons: &[[(Button, Label); 3]; 3],
+    ) -> Option<Player> {
         for possible_winner in &[O, X] {
-            for index in 0..3 {
-                if self.board[index].iter().all(|x| match x {
-                    Some(x) => x == possible_winner,
-                    None => false,
-                }) {
-                    return Some(*possible_winner);
-                };
+            if checks
+                .iter()
+                .map(|(x, y)| self.board[*x][*y])
+                .all(|x| x == Some(*possible_winner))
+            {
+                for check in checks.iter() {
+                    all_buttons[check.0][check.1].0.get_style_context().add_class("won");
+                }
+                return Some(*possible_winner);
             }
         }
         None
