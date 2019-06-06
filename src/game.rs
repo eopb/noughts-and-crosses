@@ -56,7 +56,17 @@ impl State {
                     self.end = true;
                     status.set_markup(&format!("Player {} WINS!", player.show()))
                 }
-                None => status.set_markup(&format!("Player {} turn", self.current.show())),
+                None => {
+                    if self.full() {
+                        status.set_markup("Tie!");
+                        restart_button
+                            .get_style_context()
+                            .add_class("should-restart");
+                        self.end = true;
+                    } else {
+                        status.set_markup(&format!("Player {} turn", self.current.show()))
+                    }
+                }
             };
             self
         } else if self.end {
@@ -106,5 +116,8 @@ impl State {
             }
         }
         None
+    }
+    fn full(&self) -> bool {
+        self.board.iter().flatten().all(|x| !x.is_none())
     }
 }

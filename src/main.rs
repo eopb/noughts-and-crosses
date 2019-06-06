@@ -58,26 +58,22 @@ fn main() {
 
     let button_array = get_button_array(&builder);
 
-    // window.set_icon_from_file("logo.svg").unwrap();
-
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
-            {
-                shadow_clone!(game_state, status, button_array, restart_button);
-                let label = (*button).label.clone();
-                (*button).button.connect_clicked(move |_| {
-                    game_state.clone().replace_with(|x| {
-                        x.next(
-                            &label,
-                            &button_array,
-                            &status,
-                            &restart_button,
-                            r_index,
-                            c_index,
-                        )
-                    });
+            shadow_clone!(game_state, status, button_array, restart_button);
+            let label = (*button).label.clone();
+            (*button).button.connect_clicked(move |_| {
+                game_state.clone().replace_with(|x| {
+                    x.next(
+                        &label,
+                        &button_array,
+                        &status,
+                        &restart_button,
+                        r_index,
+                        c_index,
+                    )
                 });
-            }
+            });
         }
     }
     {
