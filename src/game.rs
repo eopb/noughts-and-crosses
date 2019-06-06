@@ -77,6 +77,8 @@ impl State {
             self
         }
     }
+    // Functions used have side affects so should be called every time (not using `or_else`).
+    #[allow(clippy::or_fun_call)]
     pub fn winner(
         &self,
         all_buttons: &ButtonMatrix,
@@ -84,13 +86,13 @@ impl State {
     ) -> Option<Player> {
         let check = |x| self.check(x, all_buttons, restart_button);
         check([(0, 0), (1, 0), (2, 0)])
-            .or_else(|| check([(0, 1), (1, 1), (2, 1)]))
-            .or_else(|| check([(0, 2), (1, 2), (2, 2)]))
-            .or_else(|| check([(0, 0), (0, 1), (0, 2)]))
-            .or_else(|| check([(1, 0), (1, 1), (1, 2)]))
-            .or_else(|| check([(2, 0), (2, 1), (2, 2)]))
-            .or_else(|| check([(0, 0), (1, 1), (2, 2)]))
-            .or_else(|| check([(2, 0), (1, 1), (0, 2)]))
+            .or(check([(0, 1), (1, 1), (2, 1)]))
+            .or(check([(0, 2), (1, 2), (2, 2)]))
+            .or(check([(0, 0), (0, 1), (0, 2)]))
+            .or(check([(1, 0), (1, 1), (1, 2)]))
+            .or(check([(2, 0), (2, 1), (2, 2)]))
+            .or(check([(0, 0), (1, 1), (2, 2)]))
+            .or(check([(2, 0), (1, 1), (0, 2)]))
     }
     fn check(
         &self,
