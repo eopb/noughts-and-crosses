@@ -4,7 +4,7 @@ use gtk::{prelude::*, StyleContext};
 use shadow_clone::shadow_clone;
 use std::{cell::RefCell, rc::Rc};
 
-const GLADE_SRC: &str = include_str!("../ui/ui.glade");
+const GLADE_UI: &str = include_str!("../ui/ui.glade");
 const CSS: &str = include_str!("../ui/style.css");
 
 type ButtonMatrix = [[LabeledButton; 3]; 3];
@@ -36,7 +36,7 @@ fn main() {
         return;
     }
 
-    let builder = gtk::Builder::new_from_string(GLADE_SRC);
+    let builder = gtk::Builder::new_from_string(GLADE_UI);
 
     let window: gtk::Window = builder.get_object("main-window").unwrap();
 
@@ -79,7 +79,7 @@ fn main() {
     {
         shadow_clone!(game_state, status);
         restart_button.connect_clicked(move |bself| {
-            button_array.iter().flatten().cloned().for_each(|button| {
+            button_array.iter().flatten().for_each(|button| {
                 button.set_label("");
                 button.get_style_context().remove_class(class::WINNING_TILE)
             });
