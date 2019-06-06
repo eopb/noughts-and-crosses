@@ -9,8 +9,10 @@ const CSS: &str = include_str!("../ui/style.css");
 type ButtonArray = [[(gtk::Button, gtk::Label); 3]; 3];
 
 macro_rules! shadow_clone {
-    ($to_clone:ident) => {
-        let $to_clone = $to_clone.clone();
+    ($ ($to_clone:ident) ,*) => {
+        $(
+            let $to_clone = $to_clone.clone();
+        )*
     };
 }
 
@@ -27,7 +29,7 @@ fn main() {
     let about_button: gtk::Button = builder.get_object("about-button").unwrap();
     let about_window: gtk::Window = builder.get_object("about-window").unwrap();
     {
-        let about_window = about_window.clone();
+        shadow_clone!(about_window);
         about_button.connect_clicked(move |_| {
             about_window.show_all();
         });
@@ -47,11 +49,8 @@ fn main() {
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             {
-                shadow_clone!(game_state);
-                let status = status.clone();
+                shadow_clone!(game_state, status, button_array, restart_button);
                 let label = (*button).1.clone();
-                let button_array = button_array.clone();
-                let restart_button = restart_button.clone();
                 (*button).0.connect_clicked(move |_| {
                     game_state.clone().replace_with(|x| {
                         x.next(
@@ -68,8 +67,7 @@ fn main() {
         }
     }
     {
-        shadow_clone!(game_state);
-        let status = status.clone();
+        shadow_clone!(game_state, status);
         restart_button.connect_clicked(move |bself| {
             button_array
                 .iter()
