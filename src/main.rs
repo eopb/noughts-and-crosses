@@ -1,8 +1,8 @@
 mod game;
 
 use gtk::{prelude::*, StyleContext};
-use std::{cell::RefCell, rc::Rc};
 use shadow_clone::shadow_clone;
+use std::{cell::RefCell, rc::Rc};
 
 const GLADE_SRC: &str = include_str!("../ui/ui.glade");
 const CSS: &str = include_str!("../ui/style.css");
