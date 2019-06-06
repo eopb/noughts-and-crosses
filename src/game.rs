@@ -1,4 +1,4 @@
-use crate::ButtonArray;
+use crate::{ButtonArray,class};
 use gtk::prelude::*;
 
 #[derive(Copy, Clone, Debug, PartialEq)]
@@ -61,7 +61,7 @@ impl State {
                         status.set_markup("Tie!");
                         restart_button
                             .get_style_context()
-                            .add_class("should-restart");
+                            .add_class(class::SHOULD_RESTART);
                         self.end = true;
                     } else {
                         status.set_markup(&format!("Player {} turn", self.current.show()))
@@ -107,11 +107,11 @@ impl State {
                 for check in &checks {
                     all_buttons[check.0][check.1]
                         .get_style_context()
-                        .add_class("won");
+                        .add_class(class::WINNING_TILE);
                 }
                 restart_button
                     .get_style_context()
-                    .add_class("should-restart");
+                    .add_class(class::SHOULD_RESTART);
                 return Some(*possible_winner);
             }
         }

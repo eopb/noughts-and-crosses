@@ -81,10 +81,10 @@ fn main() {
         restart_button.connect_clicked(move |bself| {
             button_array.iter().flatten().cloned().for_each(|button| {
                 button.set_label("");
-                button.get_style_context().remove_class("won")
+                button.get_style_context().remove_class(class::WINNING_TILE)
             });
             game_state.replace_with(|_| game::State::new());
-            bself.get_style_context().remove_class("should-restart");
+            bself.get_style_context().remove_class(class::SHOULD_RESTART);
             status.set_label("Game on");
         });
     }
@@ -127,4 +127,9 @@ fn apply_css(window: &gtk::Window) {
     let style = gtk::CssProvider::new();
     let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
     gtk::StyleContext::add_provider_for_screen(&screen, &style, gtk::STYLE_PROVIDER_PRIORITY_USER);
+}
+
+mod class {
+    pub const SHOULD_RESTART: &str = "should-restart";
+    pub const WINNING_TILE: &str = "won";
 }
