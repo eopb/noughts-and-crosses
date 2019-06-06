@@ -116,6 +116,6 @@ impl State {
         None
     }
     fn full(&self) -> bool {
-        self.board.iter().flatten().all(|x| !x.is_none())
+        self.board.iter().flatten().all(Option::is_some)
     }
 }
