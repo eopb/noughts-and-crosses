@@ -64,14 +64,14 @@ fn main() {
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             shadow_clone!(game_state, status, button_array, restart_button);
-            let label = button.label.clone();
+            let button_label = button.label.clone();
             button.connect_clicked(move |_| {
                 game_state.clone().replace_with(|x| {
                     x.next(
-                        &label,
+                        &button_label,
                         &button_array,
                         &status,
-                        &restart_button,
+                        &restart_button.get_style_context(),
                         r_index,
                         c_index,
                     )

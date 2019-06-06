@@ -43,7 +43,7 @@ impl State {
         current_button: &gtk::Label,
         all_buttons: &ButtonMatrix,
         status: &gtk::Label,
-        restart_button: &gtk::Button,
+        restart_button_style: &gtk::StyleContext,
         row: usize,
         column: usize,
     ) -> Self {
@@ -51,7 +51,7 @@ impl State {
             current_button.set_label(self.current.show());
             self.board[row][column] = Some(self.current);
             self.current = self.current.swap();
-            match &self.winner(all_buttons, restart_button) {
+            match &self.winner(all_buttons, restart_button_style) {
                 Some(player) => {
                     self.end = true;
                     status.set_markup(&format!("Player {} WINS!", player.show()))
@@ -59,9 +59,7 @@ impl State {
                 None => {
                     if self.full() {
                         status.set_markup("Tie!");
-                        restart_button
-                            .get_style_context()
-                            .add_class(class::SHOULD_RESTART);
+                        restart_button_style.add_class(class::SHOULD_RESTART);
                         self.end = true;
                     } else {
                         status.set_markup(&format!("Player {} turn", self.current.show()))
@@ -82,9 +80,9 @@ impl State {
     pub fn winner(
         &self,
         all_buttons: &ButtonMatrix,
-        restart_button: &gtk::Button,
+        restart_button_style: &gtk::StyleContext,
     ) -> Option<Player> {
-        let check = |x| self.check(x, all_buttons, restart_button);
+        let check = |x| self.check(x, all_buttons, restart_button_style);
         check([(0, 0), (1, 0), (2, 0)])
             .or(check([(0, 1), (1, 1), (2, 1)]))
             .or(check([(0, 2), (1, 2), (2, 2)]))
@@ -98,7 +96,7 @@ impl State {
         &self,
         checks: [(usize, usize); 3],
         all_buttons: &ButtonMatrix,
-        restart_button: &gtk::Button,
+        restart_button_style: &gtk::StyleContext,
     ) -> Option<Player> {
         for possible_winner in &[O, X] {
             if checks
@@ -111,9 +109,7 @@ impl State {
                         .get_style_context()
                         .add_class(class::WINNING_TILE);
                 }
-                restart_button
-                    .get_style_context()
-                    .add_class(class::SHOULD_RESTART);
+                restart_button_style.add_class(class::SHOULD_RESTART);
                 return Some(*possible_winner);
             }
         }
