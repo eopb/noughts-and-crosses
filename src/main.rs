@@ -1,12 +1,34 @@
 mod game;
 
-use gtk::prelude::*;
+use gtk::{prelude::*, StyleContext};
+use shadow_clone::shadow_clone;
 use std::{cell::RefCell, rc::Rc};
 
 const GLADE_SRC: &str = include_str!("../ui/ui.glade");
 const CSS: &str = include_str!("../ui/style.css");
 
-type ButtonArray = [[(gtk::Button, gtk::Label); 3]; 3];
+type ButtonArray = [[LabeledButton; 3]; 3];
+
+#[derive(Clone)]
+pub struct LabeledButton {
+    button: gtk::Button,
+    label: gtk::Label,
+}
+
+impl LabeledButton {
+    fn get(builder: &gtk::Builder, key: &str) -> Self {
+        Self {
+            button: builder.get_object(&format!("button-{}", key)).unwrap(),
+            label: builder.get_object(&format!("label-{}", key)).unwrap(),
+        }
+    }
+    fn set_label(&self, l: &str) {
+        self.label.set_label(l);
+    }
+    fn get_style_context(&self) -> StyleContext {
+        self.button.get_style_context()
+    }
+}
 
 fn main() {
     if gtk::init().is_err() {
@@ -21,7 +43,7 @@ fn main() {
     let about_button: gtk::Button = builder.get_object("about-button").unwrap();
     let about_window: gtk::Window = builder.get_object("about-window").unwrap();
     {
-        let about_window = about_window.clone();
+        shadow_clone!(about_window);
         about_button.connect_clicked(move |_| {
             about_window.show_all();
         });
@@ -41,12 +63,9 @@ fn main() {
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             {
-                let game_state = game_state.clone();
-                let status = status.clone();
-                let label = (*button).1.clone();
-                let button_array = button_array.clone();
-                let restart_button = restart_button.clone();
-                (*button).0.connect_clicked(move |_| {
+                shadow_clone!(game_state, status, button_array, restart_button);
+                let label = (*button).label.clone();
+                (*button).button.connect_clicked(move |_| {
                     game_state.clone().replace_with(|x| {
                         x.next(
                             &label,
@@ -62,17 +81,12 @@ fn main() {
         }
     }
     {
-        let game_state = game_state.clone();
-        let status = status.clone();
+        shadow_clone!(game_state, status);
         restart_button.connect_clicked(move |bself| {
-            button_array
-                .iter()
-                .flatten()
-                .cloned()
-                .for_each(|(button, label)| {
-                    label.set_label("");
-                    button.get_style_context().remove_class("won")
-                });
+            button_array.iter().flatten().cloned().for_each(|button| {
+                button.set_label("");
+                button.get_style_context().remove_class("won")
+            });
             game_state.replace_with(|_| game::State::new());
             bself.get_style_context().remove_class("should-restart");
             status.set_label("Game on");
@@ -92,12 +106,7 @@ fn main() {
 }
 
 fn get_button_array(builder: &gtk::Builder) -> ButtonArray {
-    let get_button_with_label = |x| {
-        (
-            builder.get_object(&format!("button-{}", x)).unwrap(),
-            builder.get_object(&format!("label-{}", x)).unwrap(),
-        )
-    };
+    let get_button_with_label = |x| LabeledButton::get(builder, x);
     [
         [
             get_button_with_label("1-1"),

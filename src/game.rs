@@ -96,7 +96,6 @@ impl State {
             {
                 for check in &checks {
                     all_buttons[check.0][check.1]
-                        .0
                         .get_style_context()
                         .add_class("won");
                 }
