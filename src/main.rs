@@ -28,6 +28,9 @@ impl LabeledButton {
     fn get_style_context(&self) -> StyleContext {
         self.button.get_style_context()
     }
+    fn connect_clicked<F: Fn(&gtk::Button) + 'static>(&self, f: F) {
+        self.button.connect_clicked(f);
+    }
 }
 
 fn main() {
@@ -61,8 +64,8 @@ fn main() {
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             shadow_clone!(game_state, status, button_array, restart_button);
-            let label = (*button).label.clone();
-            (*button).button.connect_clicked(move |_| {
+            let label = button.label.clone();
+            button.connect_clicked(move |_| {
                 game_state.clone().replace_with(|x| {
                     x.next(
                         &label,
