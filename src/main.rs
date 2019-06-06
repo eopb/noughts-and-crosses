@@ -7,7 +7,7 @@ use std::{cell::RefCell, rc::Rc};
 const GLADE_SRC: &str = include_str!("../ui/ui.glade");
 const CSS: &str = include_str!("../ui/style.css");
 
-type ButtonArray = [[LabeledButton; 3]; 3];
+type ButtonMatrix = [[LabeledButton; 3]; 3];
 
 #[derive(Clone)]
 pub struct LabeledButton {
@@ -103,7 +103,7 @@ fn main() {
     gtk::main();
 }
 
-fn get_button_array(builder: &gtk::Builder) -> ButtonArray {
+fn get_button_array(builder: &gtk::Builder) -> ButtonMatrix {
     let get_button = |x| LabeledButton::get(builder, x);
     [
         [get_button("1-1"), get_button("1-2"), get_button("1-3")],

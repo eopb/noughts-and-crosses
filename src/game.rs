@@ -1,4 +1,4 @@
-use crate::{class, ButtonArray};
+use crate::{class, ButtonMatrix};
 use gtk::prelude::*;
 
 #[derive(Copy, Clone, Debug, PartialEq)]
@@ -41,7 +41,7 @@ impl State {
     pub fn next(
         mut self,
         current_button: &gtk::Label,
-        all_buttons: &ButtonArray,
+        all_buttons: &ButtonMatrix,
         status: &gtk::Label,
         restart_button: &gtk::Button,
         row: usize,
@@ -79,7 +79,7 @@ impl State {
     }
     pub fn winner(
         &self,
-        all_buttons: &ButtonArray,
+        all_buttons: &ButtonMatrix,
         restart_button: &gtk::Button,
     ) -> Option<Player> {
         let check = |x| self.check(x, all_buttons, restart_button);
@@ -95,7 +95,7 @@ impl State {
     fn check(
         &self,
         checks: [(usize, usize); 3],
-        all_buttons: &ButtonArray,
+        all_buttons: &ButtonMatrix,
         restart_button: &gtk::Button,
     ) -> Option<Player> {
         for possible_winner in &[O, X] {
