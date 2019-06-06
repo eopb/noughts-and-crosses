@@ -2,19 +2,12 @@ mod game;
 
 use gtk::{prelude::*, StyleContext};
 use std::{cell::RefCell, rc::Rc};
+use shadow_clone::shadow_clone;
 
 const GLADE_SRC: &str = include_str!("../ui/ui.glade");
 const CSS: &str = include_str!("../ui/style.css");
 
 type ButtonArray = [[LabeledButton; 3]; 3];
-
-macro_rules! shadow_clone {
-    ($ ($to_clone:ident) ,*) => {
-        $(
-            let $to_clone = $to_clone.clone();
-        )*
-    };
-}
 
 #[derive(Clone)]
 pub struct LabeledButton {
