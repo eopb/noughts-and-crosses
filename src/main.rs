@@ -106,21 +106,9 @@ fn main() {
 fn get_button_array(builder: &gtk::Builder) -> ButtonArray {
     let get_button = |x| LabeledButton::get(builder, x);
     [
-        [
-            get_button("1-1"),
-            get_button("1-2"),
-            get_button("1-3"),
-        ],
-        [
-            get_button("2-1"),
-            get_button("2-2"),
-            get_button("2-3"),
-        ],
-        [
-            get_button("3-1"),
-            get_button("3-2"),
-            get_button("3-3"),
-        ],
+        [get_button("1-1"), get_button("1-2"), get_button("1-3")],
+        [get_button("2-1"), get_button("2-2"), get_button("2-3")],
+        [get_button("3-1"), get_button("3-2"), get_button("3-3")],
     ]
 }
 
