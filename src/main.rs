@@ -4,10 +4,10 @@ use gtk::{prelude::*, StyleContext};
 use shadow_clone::shadow_clone;
 use std::{cell::RefCell, rc::Rc};
 
-const GLADE_SRC: &str = include_str!("../ui/ui.glade");
+const GLADE_UI: &str = include_str!("../ui/ui.glade");
 const CSS: &str = include_str!("../ui/style.css");
 
-type ButtonArray = [[LabeledButton; 3]; 3];
+type ButtonMatrix = [[LabeledButton; 3]; 3];
 
 #[derive(Clone)]
 pub struct LabeledButton {
@@ -28,6 +28,9 @@ impl LabeledButton {
     fn get_style_context(&self) -> StyleContext {
         self.button.get_style_context()
     }
+    fn connect_clicked<F: Fn(&gtk::Button) + 'static>(&self, f: F) {
+        self.button.connect_clicked(f);
+    }
 }
 
 fn main() {
@@ -36,7 +39,7 @@ fn main() {
         return;
     }
 
-    let builder = gtk::Builder::new_from_string(GLADE_SRC);
+    let builder = gtk::Builder::new_from_string(GLADE_UI);
 
     let window: gtk::Window = builder.get_object("main-window").unwrap();
 
@@ -56,19 +59,19 @@ fn main() {
 
     let game_state = Rc::new(RefCell::new(game::State::new()));
 
-    let button_array = get_button_array(&builder);
+    let button_array = get_button_matrix(&builder);
 
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             shadow_clone!(game_state, status, button_array, restart_button);
-            let label = (*button).label.clone();
-            (*button).button.connect_clicked(move |_| {
+            let button_label = button.label.clone();
+            button.connect_clicked(move |_| {
                 game_state.clone().replace_with(|x| {
                     x.next(
-                        &label,
+                        &button_label,
                         &button_array,
                         &status,
-                        &restart_button,
+                        &restart_button.get_style_context(),
                         r_index,
                         c_index,
                     )
@@ -79,12 +82,14 @@ fn main() {
     {
         shadow_clone!(game_state, status);
         restart_button.connect_clicked(move |bself| {
-            button_array.iter().flatten().cloned().for_each(|button| {
+            button_array.iter().flatten().for_each(|button| {
                 button.set_label("");
-                button.get_style_context().remove_class("won")
+                button.get_style_context().remove_class(class::WINNING_TILE)
             });
             game_state.replace_with(|_| game::State::new());
-            bself.get_style_context().remove_class("should-restart");
+            bself
+                .get_style_context()
+                .remove_class(class::SHOULD_RESTART);
             status.set_label("Game on");
         });
     }
@@ -101,24 +106,12 @@ fn main() {
     gtk::main();
 }
 
-fn get_button_array(builder: &gtk::Builder) -> ButtonArray {
-    let get_button_with_label = |x| LabeledButton::get(builder, x);
+fn get_button_matrix(builder: &gtk::Builder) -> ButtonMatrix {
+    let get_button = |x| LabeledButton::get(builder, x);
     [
-        [
-            get_button_with_label("1-1"),
-            get_button_with_label("1-2"),
-            get_button_with_label("1-3"),
-        ],
-        [
-            get_button_with_label("2-1"),
-            get_button_with_label("2-2"),
-            get_button_with_label("2-3"),
-        ],
-        [
-            get_button_with_label("3-1"),
-            get_button_with_label("3-2"),
-            get_button_with_label("3-3"),
-        ],
+        [get_button("1-1"), get_button("1-2"), get_button("1-3")],
+        [get_button("2-1"), get_button("2-2"), get_button("2-3")],
+        [get_button("3-1"), get_button("3-2"), get_button("3-3")],
     ]
 }
 
@@ -127,4 +120,9 @@ fn apply_css(window: &gtk::Window) {
     let style = gtk::CssProvider::new();
     let _ = gtk::CssProviderExt::load_from_data(&style, CSS.as_bytes());
     gtk::StyleContext::add_provider_for_screen(&screen, &style, gtk::STYLE_PROVIDER_PRIORITY_USER);
+}
+
+mod class {
+    pub const SHOULD_RESTART: &str = "should-restart";
+    pub const WINNING_TILE: &str = "won";
 }
