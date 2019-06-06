@@ -58,8 +58,6 @@ fn main() {
 
     let button_array = get_button_array(&builder);
 
-    // window.set_icon_from_file("logo.svg").unwrap();
-
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             shadow_clone!(game_state, status, button_array, restart_button);
