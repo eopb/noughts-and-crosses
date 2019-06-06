@@ -1,4 +1,4 @@
-use crate::{ButtonArray,class};
+use crate::{class, ButtonArray};
 use gtk::prelude::*;
 
 #[derive(Copy, Clone, Debug, PartialEq)]

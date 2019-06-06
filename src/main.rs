@@ -84,7 +84,9 @@ fn main() {
                 button.get_style_context().remove_class(class::WINNING_TILE)
             });
             game_state.replace_with(|_| game::State::new());
-            bself.get_style_context().remove_class(class::SHOULD_RESTART);
+            bself
+                .get_style_context()
+                .remove_class(class::SHOULD_RESTART);
             status.set_label("Game on");
         });
     }
