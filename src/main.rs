@@ -8,7 +8,6 @@ const CSS: &str = include_str!("../ui/style.css");
 
 type ButtonArray = [[(gtk::Button, gtk::Label); 3]; 3];
 
-
 macro_rules! shadow_clone {
     ($to_clone:ident) => {
         let $to_clone = $to_clone.clone();
