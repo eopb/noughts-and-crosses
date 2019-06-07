@@ -7,11 +7,7 @@ before_script:
   - pacman -Sy grep --noconfirm
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
   - pacman -Sy gtk3 gcc --noconfirm
-  - cat $HOME/.cargo/env
   - export PATH="$HOME/.cargo/bin:$PATH"
-  - echo $PATH
-  - sh $HOME/.cargo/env
-  - rustup target add x86_64-pc-windows-gnu
 
 stages:
   - check
@@ -60,6 +56,7 @@ linux-optimized:
 windows-optimized:
   stage: deploy
   script:
+    - rustup target add x86_64-pc-windows-gnu
     - cat /etc/pacman.conf
     - echo [archlinuxfr] >> .cargo/config
     - echo SigLevel = Never >> .cargo/config
