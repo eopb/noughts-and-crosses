@@ -59,7 +59,7 @@ windows-optimized:
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
     - pacman -Syyu --noconfirm
-    - pacman -S expac yajl tree meson gtest gmock --noconfirm
+    - pacman -S expac yajl tree meson gtest gmock jq --noconfirm
     - pacman -S --needed --noconfirm sudo # Install sudo
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
