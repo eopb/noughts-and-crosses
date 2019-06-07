@@ -1,5 +1,5 @@
 
-image: "archlinux:base"
+image: "archlinux/base"
 
 
 before_script:
