@@ -8,7 +8,7 @@ before_script:
   - yum install gtk3-devel glib2-devel -y 
   - yum install tree -y
   - tree -a
-  - cat $HOME/.cargo/env
+  - sh $HOME/.cargo/env
   - rustup target add x86_64-pc-windows-gnu
 
 stages:
