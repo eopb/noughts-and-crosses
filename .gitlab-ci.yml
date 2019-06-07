@@ -1,5 +1,5 @@
 
-image: "fedora:latest"
+image: "archlinux:base"
 
 
 before_script:
