@@ -50,6 +50,12 @@ windows-optimized:
     - echo SigLevel = Never >> /etc/pacman.conf
     - echo Server = http://repo.archlinux.fr/x86_64/$arch >> /etc/pacman.conf
     - cat /etc/pacman.conf
+    - mkdir .cargo
+    - touch .cargo/config
+    - echo [target.x86_64-pc-windows-gnu] >> .cargo/config
+    - echo     linker = \"x86_64-w64-mingw32-gcc\" >> .cargo/config
+    - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
+    - cat .cargo/config
     - pacman -Sy yaourt --noconfirm
     - yaourt -S mingw-w64-harfbuzz
     - yaourt -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
