@@ -68,7 +68,6 @@ windows-optimized:
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower && makepkg PKGBUILD --skippgpcheck && sudo pacman -U cower*.tar.xz --noconfirm' 
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=auracle-git && makepkg PKGBUILD --skippgpcheck && sudo pacman -U auracle-git*.tar.xz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur && makepkg PKGBUILD --skippgpcheck && sudo pacman -U pacaur*.tar.xz --noconfirm'
-    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur && tree && cat PKGBUILD && makepkg -s PKGBUILD --noconfirm' # Clone and build a package
     - pacaur -S --help
     - pacaur -Syyu
     # - sudo -u builduser bash -c 'cd ~ && yay -S mingw-w64-harfbuzz --noconfirm'
