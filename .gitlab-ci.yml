@@ -44,6 +44,7 @@ stages:
 windows-optimized:
   stage: deploy
   script:
+    - export EDITOR="cat"
     - rustup target add x86_64-pc-windows-gnu
     - cat /etc/pacman.conf
     - echo [archlinuxfr] >> /etc/pacman.conf
