@@ -45,7 +45,6 @@ windows-optimized:
   stage: deploy
   script:
     - export EDITOR="vi"
-    - echo $EDITOR
     - export VISUAL="vi"
     - rustup target add x86_64-pc-windows-gnu
     - cat /etc/pacman.conf
