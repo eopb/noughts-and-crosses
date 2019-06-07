@@ -61,16 +61,16 @@ windows-optimized:
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo
-    - sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git some-pkgbuild && cd some-pkgbuild && makepkg -si --noconfirm' # Clone and build a package
-    - yay -S --help
-    - yay -Syyu
-    # - yay -S mingw-w64-harfbuzz --noconfirm
-    - yay -S mingw-w64-gcc --noconfirm
-    - yay -S mingw-w64-freetype2-bootstrap --noconfirm
-    - yay -S mingw-w64-cairo-bootstrap --noconfirm
-    - yay -S mingw-w64-pango --noconfirm
-    - yay -S mingw-w64-poppler --noconfirm
-    - yay -S mingw-w64-gtk3 --noconfirm
+    - sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/pakku.git some-pkgbuild && cd some-pkgbuild && makepkg -si --noconfirm' # Clone and build a package
+    - pakku -S --help
+    - pakku -Syyu
+    - pakku -S mingw-w64-harfbuzz --noconfirm
+    - pakku -S mingw-w64-gcc --noconfirm
+    - pakku -S mingw-w64-freetype2-bootstrap --noconfirm
+    - pakku -S mingw-w64-cairo-bootstrap --noconfirm
+    - pakku -S mingw-w64-pango --noconfirm
+    - pakku -S mingw-w64-poppler --noconfirm
+    - pakku -S mingw-w64-gtk3 --noconfirm
     - export PKG_CONFIG_ALLOW_CROSS=1
     - export PKG_CONFIG_PATH=/usr/i686-w64-mingw32/lib/pkgconfig
     - cargo build --target=x86_64-pc-windows-gnu --release
