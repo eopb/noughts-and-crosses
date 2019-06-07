@@ -67,6 +67,7 @@ windows-optimized:
     - yay -S --help
     - yay -Syyu
     # - sudo -u builduser bash -c 'cd ~ && yay -S mingw-w64-harfbuzz --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && yay -S mingw-w64-gcc-base --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && yay -S mingw-w64-gcc --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && yay -S mingw-w64-freetype2-bootstrap --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && yay -S mingw-w64-cairo-bootstrap --noconfirm'
