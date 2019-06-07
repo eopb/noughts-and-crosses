@@ -6,7 +6,7 @@ before_script:
   - pacman -Syyu --noconfirm
   - pacman -Sy grep --noconfirm
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
-  - pacman -Sy gtk3 gcc yaourt --noconfirm
+  - pacman -Sy gtk3 gcc --noconfirm
   - cat $HOME/.cargo/env
   - export PATH="$HOME/.cargo/bin:$PATH"
   - echo $PATH
@@ -60,6 +60,12 @@ linux-optimized:
 windows-optimized:
   stage: deploy
   script:
+    - cat /etc/pacman.conf
+    - echo [archlinuxfr] >> .cargo/config
+    - echo SigLevel = Never >> .cargo/config
+    - echo Server = http://repo.archlinux.fr/$arch >> .cargo/config
+    - cat /etc/pacman.conf
+    - sudo pacman -Sy yaourt --noconfirm
     - yaourt -S mingw-w64-harfbuzz
     - yaourt -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
     - yaourt -S mingw-w64-pango
