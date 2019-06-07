@@ -3,7 +3,7 @@ image: "fedora:latest"
 
 
 before_script:
-  - yum update
+  - yum update -y
   - yum install libgtk-3-dev -y
 
 stages:
