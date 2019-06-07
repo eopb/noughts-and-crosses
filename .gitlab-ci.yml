@@ -59,7 +59,7 @@ windows-optimized:
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
     - pacman -Syyu --noconfirm
-    - pacman -S --needed --noconfirm sudo # Install sudo
+    - pacman -S --needed --noconfirm sudo tree # Install sudo
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo
