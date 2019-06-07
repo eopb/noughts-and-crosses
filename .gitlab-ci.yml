@@ -6,7 +6,7 @@ before_script:
   - pacman -Syyu --noconfirm
   - pacman -Sy grep --noconfirm
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
-  - pacman -Sy gtk3 gcc git fakeroot base-devel wine --noconfirm
+  - pacman -Sy gtk3 gcc git fakeroot base-devel --noconfirm
   - export PATH="$HOME/.cargo/bin:$PATH"
 
 stages:
