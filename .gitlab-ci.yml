@@ -5,7 +5,7 @@ image: "fedora:latest"
 before_script:
   - yum update -y
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
-  - yum install gtk3-devel glib2-devel tree gcc cc -y 
+  - yum install gtk3-devel glib2-devel tree gcc -y 
   - tree -a
   - export PATH="$HOME/.cargo/bin:$PATH"
 
