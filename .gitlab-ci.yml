@@ -3,7 +3,7 @@ image: "fedora:latest"
 
 
 before_script:
-  - yum update -y
+  # - yum update -y
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
   - yum install gtk3-devel glib2-devel -y 
   - rustup target add x86_64-pc-windows-gnu
