@@ -60,6 +60,11 @@ linux-optimized:
 windows-optimized:
   stage: deploy
   script:
+    - yaourt -S mingw-w64-harfbuzz
+    - yaourt -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
+    - yaourt -S mingw-w64-pango
+    - yaourt -S mingw-w64-poppler
+    - yaourt -S mingw-w64-gtk3
     - cargo build --release
     - rm -r -f files
     - mkdir files
