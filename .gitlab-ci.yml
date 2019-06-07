@@ -59,11 +59,12 @@ windows-optimized:
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
     - pacman -Syyu --noconfirm
+    - pacman -S expac yajl --noconfirm
     - pacman -S --needed --noconfirm sudo # Install sudo
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo
-    - sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git some-pkgbuild && cd some-pkgbuild && makepkg -si --noconfirm' # Clone and build a package
+    - sudo -u builduser bash -c 'cd ~ && gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53 && curl -o some-pkgbuild https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cowert && cd some-pkgbuild && makepkg -si --noconfirm' # Clone and build a package
     - yay -S --help
     - yay -Syyu
     # - sudo -u builduser bash -c 'cd ~ && yay -S mingw-w64-harfbuzz --noconfirm'
