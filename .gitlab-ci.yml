@@ -1,6 +1,7 @@
 
 image: "archlinux/base"
 
+output_limit: 40960
 
 before_script:
   - pacman -Syyu --noconfirm
