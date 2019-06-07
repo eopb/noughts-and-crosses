@@ -5,17 +5,12 @@ image: "fedora:latest"
 before_script:
   - yum update -y
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
-  - yum install gtk3-devel glib2-devel tree gcc mingw64-gtk3 -y 
+  - yum install gtk3-devel glib2-devel tree gcc -y 
   - tree -a
-  - cat $HOME/.cargo/env
   - export PATH="$HOME/.cargo/bin:$PATH"
-  - echo $PATH
-  - sh $HOME/.cargo/env
-  - rustup target add x86_64-pc-windows-gnu
 
 stages:
   - check
-  - test
   - publish
   - deploy
   - post-run
@@ -34,16 +29,6 @@ check:
     - cargo check
 
 
-unittests:
-  stage: test
-  script:
-    - cargo test --release
-
-benchmarktests:
-  stage: test
-  script:
-    - cargo bench
-
 linux-optimized:
   stage: deploy
   script:
@@ -60,6 +45,8 @@ linux-optimized:
 windows-optimized:
   stage: deploy
   script:
+    - rustup target add x86_64-pc-windows-gnu
+    - yum install mingw64-gtk3 -y 
     - cargo build --release
     - rm -r -f files
     - mkdir files
