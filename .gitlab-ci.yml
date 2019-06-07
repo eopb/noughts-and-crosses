@@ -57,12 +57,15 @@ windows-optimized:
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
     - pacman -Syyu --noconfirm
-    - pacman -Sy yaourt --noconfirm
-    - yaourt -S mingw-w64-harfbuzz
-    - yaourt -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
-    - yaourt -S mingw-w64-pango
-    - yaourt -S mingw-w64-poppler
-    - yaourt -S mingw-w64-gtk3
+    - git clone https://aur.archlinux.org/yay.git
+    - cd yay
+    - makepkg -si
+    - cd ..
+    - yay -S mingw-w64-harfbuzz
+    - yay -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
+    - yay -S mingw-w64-pango
+    - yay -S mingw-w64-poppler
+    - yay -S mingw-w64-gtk3
     - export PKG_CONFIG_ALLOW_CROSS=1
     - export PKG_CONFIG_PATH=/usr/i686-w64-mingw32/lib/pkgconfig
     - cargo build --target=x86_64-pc-windows-gnu --release
