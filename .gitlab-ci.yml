@@ -3,9 +3,9 @@ image: "archlinux/base"
 
 
 before_script:
-  - pacman -Syu
+  - pacman -Syyu
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
-  - pacman -S gtk3
+  - pacman -Sy gtk3
   - rustup target add x86_64-pc-windows-gnu
 
 stages:
