@@ -6,7 +6,7 @@ before_script:
   - yum update -y
   - yum install rust -y
   - yum install gtk3-devel glib2-devel -y 
-  
+  - rustup target add x86_64-pc-windows-gnu
 
 stages:
   - check
