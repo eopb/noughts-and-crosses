@@ -10,36 +10,36 @@ before_script:
   - export PATH="$HOME/.cargo/bin:$PATH"
 
 stages:
-  - check
-  - publish
+  # - check
+  # - publish
   - deploy
-  - post-run
+  # - post-run
 
 
-clean-code:
-  stage: check
-  script:
-    - rustup component add rustfmt-preview
-    - cargo fmt --all -- --check
-  allow_failure: true
+# clean-code:
+#   stage: check
+#   script:
+#     - rustup component add rustfmt-preview
+#     - cargo fmt --all -- --check
+#   allow_failure: true
 
-check:
-  stage: check
-  script:
-    - cargo check
+# check:
+#   stage: check
+#   script:
+#     - cargo check
 
-linux-optimized:
-  stage: deploy
-  script:
-    - cargo build --release
-    - rm -r -f files
-    - mkdir files
-    - cp target/release/noughts-and-crosses files
-  when: on_success
-  artifacts:
-    paths:
-      - files
-    expire_in: 2 weeks
+# linux-optimized:
+#   stage: deploy
+#   script:
+#     - cargo build --release
+#     - rm -r -f files
+#     - mkdir files
+#     - cp target/release/noughts-and-crosses files
+#   when: on_success
+#   artifacts:
+#     paths:
+#       - files
+#     expire_in: 2 weeks
 
 windows-optimized:
   stage: deploy
@@ -80,25 +80,25 @@ windows-optimized:
       - files
     expire_in: 2 weeks
 
-cratesio:
-  stage: publish
-  script:
-    - rm -r -f files
-    - cargo login $CARGO_LOGIN
-    - cargo package
-    - cargo publish
-  when: on_success
-  only:
-    refs:
-      - stable
-  allow_failure: true
+# cratesio:
+#   stage: publish
+#   script:
+#     - rm -r -f files
+#     - cargo login $CARGO_LOGIN
+#     - cargo package
+#     - cargo publish
+#   when: on_success
+#   only:
+#     refs:
+#       - stable
+#   allow_failure: true
 
 
-clippy:
-  stage: post-run
-  script:
-    - rustup default nightly
-    - rustup update
-    - rustup component add clippy-preview
-    - cargo clippy -- -D clippy::pedantic
-  allow_failure: true
+# clippy:
+#   stage: post-run
+#   script:
+#     - rustup default nightly
+#     - rustup update
+#     - rustup component add clippy-preview
+#     - cargo clippy -- -D clippy::pedantic
+#   allow_failure: true
