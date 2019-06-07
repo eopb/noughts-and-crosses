@@ -64,7 +64,7 @@ windows-optimized:
     - sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/yay.git some-pkgbuild && cd some-pkgbuild && makepkg -si --noconfirm' # Clone and build a package
     - yay -S --help
     - yay -Syyu
-    - yay -S mingw-w64-harfbuzz --noconfirm
+    # - yay -S mingw-w64-harfbuzz --noconfirm
     - yay -S mingw-w64-gcc --noconfirm
     - yay -S mingw-w64-freetype2-bootstrap --noconfirm
     - yay -S mingw-w64-cairo-bootstrap --noconfirm
