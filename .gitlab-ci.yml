@@ -65,7 +65,9 @@ windows-optimized:
     - yay -S --help
     - yay -Syyu
     - yay -S mingw-w64-harfbuzz --noconfirm
-    - yay -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap --noconfirm
+    - yay -S mingw-w64-gcc --noconfirm
+    - yay -S mingw-w64-freetype2-bootstrap --noconfirm
+    - yay -S mingw-w64-cairo-bootstrap --noconfirm
     - yay -S mingw-w64-pango --noconfirm
     - yay -S mingw-w64-poppler --noconfirm
     - yay -S mingw-w64-gtk3 --noconfirm
