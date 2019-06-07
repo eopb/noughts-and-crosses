@@ -56,6 +56,7 @@ windows-optimized:
     - echo     linker = \"x86_64-w64-mingw32-gcc\" >> .cargo/config
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
+    - pacman -Syyu --noconfirm
     - pacman -Sy yaourt --noconfirm
     - yaourt -S mingw-w64-harfbuzz
     - yaourt -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
