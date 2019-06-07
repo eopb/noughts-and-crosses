@@ -4,6 +4,7 @@ image: "archlinux/base"
 
 before_script:
   - pacman -Syyu --noconfirm
+  - pacman -Sy grep --noconfirm
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
   - pacman -Sy gtk3 --noconfirm
   - cat $HOME/.cargo/env
