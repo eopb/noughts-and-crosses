@@ -8,6 +8,7 @@ before_script:
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
   - pacman -Sy gtk3 --noconfirm
   - sh $HOME/.cargo/env
+  - cargo check
   - rustup target add x86_64-pc-windows-gnu
 
 stages:
