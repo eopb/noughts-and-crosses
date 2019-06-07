@@ -11,7 +11,6 @@ before_script:
 
 stages:
   - check
-  - test
   - publish
   - deploy
   - post-run
@@ -28,17 +27,6 @@ check:
   stage: check
   script:
     - cargo check
-
-
-unittests:
-  stage: test
-  script:
-    - cargo test --release
-
-benchmarktests:
-  stage: test
-  script:
-    - cargo bench
 
 linux-optimized:
   stage: deploy
