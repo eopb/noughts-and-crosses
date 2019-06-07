@@ -59,7 +59,7 @@ windows-optimized:
     - pacman -Syyu --noconfirm
     - git clone https://aur.archlinux.org/yay.git
     - cd yay
-    - makepkg -si
+    - makepkg -si --asroot
     - cd ..
     - yay -S mingw-w64-harfbuzz
     - yay -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
