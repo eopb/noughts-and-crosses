@@ -9,6 +9,7 @@ before_script:
   - yum install tree -y
   - tree -a
   - sh $HOME/.cargo/env
+  - cargo check
   - rustup target add x86_64-pc-windows-gnu
 
 stages:
