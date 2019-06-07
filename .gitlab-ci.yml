@@ -49,6 +49,7 @@ windows-optimized:
     - yum install mingw64-gtk3 -y 
     - export PKG_CONFIG_ALLOW_CROSS=1
     - export PKG_CONFIG_PATH=/usr/i686-w64-mingw32/lib/pkgconfig
+    - export PKG_CONFIG_PATH=/opt/gtkwin/lib/pkgconfig
     - cargo build --target=x86_64-pc-windows-gnu --release
     - rm -r -f files
     - tree
