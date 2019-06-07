@@ -5,6 +5,7 @@ image: "fedora:latest"
 before_script:
   - yum update -y
   - yum install gtk3-devel glib2-devel
+  - yum install rustup
 
 stages:
   - check
