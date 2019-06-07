@@ -50,7 +50,7 @@ windows-optimized:
     - echo SigLevel = Never >> /etc/pacman.conf
     - echo Server = http://repo.archlinux.fr/$arch >> /etc/pacman.conf
     - cat /etc/pacman.conf
-    - sudo pacman -Sy yaourt --noconfirm
+    - pacman -Sy yaourt --noconfirm
     - yaourt -S mingw-w64-harfbuzz
     - yaourt -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap
     - yaourt -S mingw-w64-pango
