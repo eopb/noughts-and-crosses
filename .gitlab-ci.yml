@@ -46,9 +46,9 @@ windows-optimized:
   script:
     - rustup target add x86_64-pc-windows-gnu
     - cat /etc/pacman.conf
-    - echo [archlinuxfr] >> .cargo/config
-    - echo SigLevel = Never >> .cargo/config
-    - echo Server = http://repo.archlinux.fr/$arch >> .cargo/config
+    - echo [archlinuxfr] >> /etc/pacman.conf
+    - echo SigLevel = Never >> /etc/pacman.conf
+    - echo Server = http://repo.archlinux.fr/$arch >> /etc/pacman.conf
     - cat /etc/pacman.conf
     - sudo pacman -Sy yaourt --noconfirm
     - yaourt -S mingw-w64-harfbuzz
