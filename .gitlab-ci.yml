@@ -7,7 +7,7 @@ before_script:
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
   - yum install gtk3-devel glib2-devel -y 
   - yum install tree -y
-  - tree
+  - tree -a
   - rustup target add x86_64-pc-windows-gnu
 
 stages:
