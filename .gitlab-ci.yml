@@ -9,6 +9,7 @@ before_script:
   - pacman -Sy gtk3 --noconfirm
   - cat $HOME/.cargo/env
   - export PATH="$HOME/.cargo/bin:$PATH"
+  - echo $PATH
   - sh $HOME/.cargo/env
   - cargo check
   - rustup target add x86_64-pc-windows-gnu
