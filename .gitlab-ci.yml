@@ -49,6 +49,8 @@ windows-optimized:
     - echo [archlinuxfr] >> /etc/pacman.conf
     - echo SigLevel = Never >> /etc/pacman.conf
     - echo Server = http://repo.archlinux.fr/x86_64/$arch >> /etc/pacman.conf
+    - echo [multilib] >> /etc/pacman.conf
+    - echo Include = /etc/pacman.d/mirrorlist >> /etc/pacman.conf
     - cat /etc/pacman.conf
     - mkdir .cargo
     - touch .cargo/config
