@@ -4,7 +4,7 @@ image: "fedora:latest"
 
 before_script:
   - yum update -y
-  - yum install libgtk-3-dev -y
+  - yum install gtk3-devel glib2-devel
 
 stages:
   - check
