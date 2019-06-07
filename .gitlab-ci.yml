@@ -44,9 +44,9 @@ stages:
 windows-optimized:
   stage: deploy
   script:
-    - export EDITOR="nano"
+    - export EDITOR="vi"
     - echo $EDITOR
-    - export VISUAL="nano"
+    - export VISUAL="vi"
     - rustup target add x86_64-pc-windows-gnu
     - cat /etc/pacman.conf
     - echo [archlinuxfr] >> /etc/pacman.conf
@@ -62,7 +62,7 @@ windows-optimized:
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
     - pacman -Syyu --noconfirm
-    - pacman -S expac yajl tree meson gtest gmock jq nano --noconfirm
+    - pacman -S expac yajl tree meson gtest gmock jq nano vi --noconfirm
     - pacman -S --needed --noconfirm sudo # Install sudo
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
