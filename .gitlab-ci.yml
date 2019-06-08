@@ -68,7 +68,7 @@ windows-optimized:
     - pakku -Syyu
     - sudo -u builduser bash -c 'cd ~ && pakku -S pod2man -q --noconfirm' &>/dev/null
     - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-pkg-config -q --noconfirm' &>/dev/null
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-winpthreads -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-winpthreads -q --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-harfbuzz -q --noconfirm' &>/dev/null
     - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-gcc -q --noconfirm' &>/dev/null
     - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-freetype2-bootstrap -q --noconfirm' &>/dev/null
