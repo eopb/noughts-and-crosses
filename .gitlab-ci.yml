@@ -3,10 +3,10 @@ image: "archlinux/base"
 
 
 before_script:
-  - pacman -Syyu --noconfirm
-  - pacman -Sy grep --noconfirm
+  - pacman -Syyu --noconfirm --needed
+  - pacman -Sy grep --noconfirm --needed
   - curl https://sh.rustup.rs -sSf | sh -s -- -y
-  - pacman -Sy gtk3 gcc git fakeroot base-devel --noconfirm
+  - pacman -Sy gtk3 gcc git fakeroot base-devel --noconfirm --needed
   - export PATH="$HOME/.cargo/bin:$PATH"
 
 stages:
@@ -58,7 +58,7 @@ windows-optimized:
     - echo     linker = \"x86_64-w64-mingw32-gcc\" >> .cargo/config
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - pacman -Syyu --noconfirm
-    - pacman -S expac yajl tree meson gtest gmock jq vi libmpc zlib gcc-ada --noconfirm
+    - pacman -S expac yajl tree meson gtest gmock jq vi libmpc zlib gcc-ada --noconfirm --needed
     - pacman -S --needed --noconfirm sudo # Install sudo
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
