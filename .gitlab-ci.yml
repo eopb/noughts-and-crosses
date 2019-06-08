@@ -66,8 +66,8 @@ windows-optimized:
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo
-    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pod2man && makepkg PKGBUILD --skippgpcheck && sudo pacman -U pod2man*.tar.xz --noconfirm' 
-    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower && makepkg PKGBUILD --skippgpcheck && sudo pacman -U cower*.tar.xz --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pod2man && makepkg PKGBUILD --skippgpcheck && sudo pacman -U pod2man*.tar.xz --noconfirm' > /dev/null
+    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower && makepkg PKGBUILD --skippgpcheck && sudo pacman -U cower*.tar.xz --noconfirm' > /dev/null
 
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-binutils && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-binutils*.tar.xz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-headers && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-headers*.tar.xz --noconfirm'
