@@ -72,7 +72,9 @@ windows-optimized:
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur && makepkg PKGBUILD --skippgpcheck && sudo pacman -U pacaur*.tar.xz --noconfirm'
     - pacaur -S --help
     - sudo -u builduser bash -c 'cd ~ && pacaur -Syyu --noconfirm'
-    - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-gcc mingw-w64-freetype2-bootstrap mingw-w64-cairo-bootstrap --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-gcc --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-freetype2-bootstrap --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-cairo-bootstrap --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-harfbuzz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-pango --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-poppler --noconfirm'
