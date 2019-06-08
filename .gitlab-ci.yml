@@ -66,6 +66,7 @@ windows-optimized:
     - sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/pakku.git some-pkgbuild && cd some-pkgbuild && makepkg -si --noconfirm' # Clone and build a package
     - pakku -S --help
     - pakku -Syyu
+    - sudo -u builduser bash -c 'cd ~ && pakku -S pod2man -q --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-pkg-config -q --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-winpthreads -q --noconfirm > /dev/null || true'
     - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-harfbuzz -q --noconfirm > /dev/null'
