@@ -71,7 +71,7 @@ windows-optimized:
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-headers-bootstrap && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-headers-bootstrap*.tar.xz --noconfirm'  &>/dev/null
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-gcc-base && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-gcc-base*.tar.xz --noconfirm'  &>/dev/null
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-crt && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-crt*.tar.xz --noconfirm'  &>/dev/null
-    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-winpthreads && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-winpthreads*.tar.xz --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-winpthreads && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-winpthreads*.tar.xz --force --noconfirm'
     - exit 1
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-gcc && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-gcc*.tar.xz --noconfirm'
     - pacaur -S --help
