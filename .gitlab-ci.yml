@@ -70,6 +70,7 @@ windows-optimized:
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower && makepkg PKGBUILD --skippgpcheck && sudo pacman -U cower*.tar.xz --noconfirm' 
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=auracle-git && makepkg PKGBUILD --skippgpcheck && sudo pacman -U auracle-git*.tar.xz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur && makepkg PKGBUILD --skippgpcheck && sudo pacman -U pacaur*.tar.xz --noconfirm'
+    
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-binutils && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-binutils*.tar.xz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-headers && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-headers*.tar.xz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-headers-bootstrap && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-headers-bootstrap*.tar.xz --noconfirm'
