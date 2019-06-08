@@ -63,19 +63,19 @@ windows-optimized:
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
     - printf 'builduser ALL=(ALL) ALL\n' | tee -a /etc/sudoers # Allow the builduser passwordless sudo
-    - sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/pakku.git some-pkgbuild && cd some-pkgbuild && makepkg -si --noconfirm' # Clone and build a package
+    - sudo -u builduser bash -c 'cd ~ && git clone https://aur.archlinux.org/pakku.git some-pkgbuild && cd some-pkgbuild && makepkg -si --noconfirm' &>/dev/null # Clone and build a package
     - pakku -S --help
     - pakku -Syyu
-    - sudo -u builduser bash -c 'cd ~ && pakku -S pod2man -q --noconfirm'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-pkg-config -q --noconfirm'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-winpthreads -q --noconfirm > /dev/null || true'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-harfbuzz -q --noconfirm > /dev/null'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-gcc -q --noconfirm > /dev/null'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-freetype2-bootstrap -q --noconfirm > /dev/null'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-cairo-bootstrap -q --noconfirm > /dev/null'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-pango -q --noconfirm > /dev/null'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-poppler -q --noconfirm > /dev/null'
-    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-gtk3 -q --noconfirm > /dev/null'
+    - sudo -u builduser bash -c 'cd ~ && pakku -S pod2man -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-pkg-config -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-winpthreads -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-harfbuzz -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-gcc -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-freetype2-bootstrap -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-cairo-bootstrap -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-pango -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-poppler -q --noconfirm' &>/dev/null
+    - sudo -u builduser bash -c 'cd ~ && pakku -S mingw-w64-gtk3 -q --noconfirm' &>/dev/null
     - export PKG_CONFIG_ALLOW_CROSS=1
     - export PKG_CONFIG_PATH=/usr/i686-w64-mingw32/lib/pkgconfig
     - cargo build --target=x86_64-pc-windows-gnu --release
