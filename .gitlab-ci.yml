@@ -61,7 +61,7 @@ windows-optimized:
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
     - pacman -Syyu --noconfirm
-    - pacman -S expac yajl tree meson gtest gmock jq nano vi --noconfirm
+    - pacman -S expac yajl tree meson gtest gmock jq nano vi libmpc zlib gcc-ada --noconfirm
     - pacman -S --needed --noconfirm sudo # Install sudo
     - useradd builduser -m # Create the builduser
     - passwd -d builduser # Delete the buildusers password
@@ -71,6 +71,10 @@ windows-optimized:
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=auracle-git && makepkg PKGBUILD --skippgpcheck && sudo pacman -U auracle-git*.tar.xz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur && makepkg PKGBUILD --skippgpcheck && sudo pacman -U pacaur*.tar.xz --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-binutils && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-binutils*.tar.xz --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-gcc-base && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-gcc-base*.tar.xz --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-headers && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-headers*.tar.xz --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-crt && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-crt*.tar.xz --noconfirm'
+    - sudo -u builduser bash -c 'cd ~ && curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=mingw-w64-winpthreads && makepkg PKGBUILD --skippgpcheck && sudo pacman -U mingw-w64-winpthreads*.tar.xz --noconfirm'
     - pacaur -S --help
     - sudo -u builduser bash -c 'cd ~ && pacaur -Syyu --noconfirm'
     - sudo -u builduser bash -c 'cd ~ && pacaur -S mingw-w64-gcc --noconfirm'
