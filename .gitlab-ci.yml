@@ -58,6 +58,8 @@ windows-optimized:
     - echo     linker = \"x86_64-w64-mingw32-gcc\" >> .cargo/config
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - pacman -Syyu --noconfirm
+    - pacman -S --help
+    - exit 1
     - pacman -S expac yajl tree meson gtest gmock jq vi libmpc zlib gcc-ada --noconfirm
     - pacman -S --needed --noconfirm sudo # Install sudo
     - useradd builduser -m # Create the builduser
