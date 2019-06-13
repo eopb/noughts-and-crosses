@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"]
+
 mod game;
 
 use gtk::{prelude::*, StyleContext};
@@ -39,12 +41,16 @@ fn main() {
         return;
     }
 
+    let game_state = Rc::new(RefCell::new(game::State::new()));
+
     let builder = gtk::Builder::new_from_string(GLADE_UI);
-
-    let window: gtk::Window = builder.get_object("main-window").unwrap();
-
-    let about_button: gtk::Button = builder.get_object("about-button").unwrap();
+    let main_window: gtk::Window = builder.get_object("main-window").unwrap();
     let about_window: gtk::Window = builder.get_object("about-window").unwrap();
+    let about_button: gtk::Button = builder.get_object("about-button").unwrap();
+    let restart_button: gtk::Button = builder.get_object("restart").unwrap();
+    let status: gtk::Label = builder.get_object("status").unwrap();
+
+    let button_array = get_button_matrix(&builder);
     {
         shadow_clone!(about_window);
         about_button.connect_clicked(move |_| {
@@ -52,15 +58,6 @@ fn main() {
         });
     }
     about_window.connect_delete_event(|x, _| Inhibit(x.hide_on_delete()));
-
-    let restart_button: gtk::Button = builder.get_object("restart").unwrap();
-
-    let status: gtk::Label = builder.get_object("status").unwrap();
-
-    let game_state = Rc::new(RefCell::new(game::State::new()));
-
-    let button_array = get_button_matrix(&builder);
-
     for (r_index, row) in button_array.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
             shadow_clone!(game_state, status, button_array, restart_button);
@@ -94,11 +91,9 @@ fn main() {
         });
     }
 
-    apply_css(&window);
-
-    window.show_all();
-
-    window.connect_delete_event(|_, _| {
+    apply_css(&main_window);
+    main_window.show_all();
+    main_window.connect_delete_event(|_, _| {
         gtk::main_quit();
         Inhibit(false)
     });
