@@ -19,8 +19,6 @@ fn main() {
         return;
     }
 
-    
-
     let builder = gtk::Builder::new_from_string(GLADE_UI);
     let main_window: gtk::Window = builder.get_object("main-window").unwrap();
     let about_window: gtk::Window = builder.get_object("about-window").unwrap();
@@ -28,8 +26,8 @@ fn main() {
     let restart_button: gtk::Button = builder.get_object("restart").unwrap();
     let status: gtk::Label = builder.get_object("status").unwrap();
 
-    let button_array = Board::get(&builder);
-    let game_state = Rc::new(RefCell::new(game::State::new(button_array.clone())));
+    let _button_array = Board::get(&builder);
+    let game_state = Rc::new(RefCell::new(game::State::new(_button_array.clone())));
     {
         shadow_clone!(about_window);
         about_button.connect_clicked(move |_| {
@@ -37,14 +35,14 @@ fn main() {
         });
     }
     about_window.connect_delete_event(|x, _| Inhibit(x.hide_on_delete()));
-    for (r_index, row) in button_array.0.clone().iter().enumerate() {
+    for (r_index, row) in game_state.clone().get_mut().board.0.clone().iter().enumerate() {
         for (c_index, button) in row.iter().enumerate() {
-            shadow_clone!(game_state, status, button_array, restart_button, button);
+            shadow_clone!(game_state, status, restart_button, button);
             button.connect_clicked(move |_| {
                 game_state.clone().replace_with(|x| {
-                    x.next(
+                    x.clone().next(
                         &button,
-                        &button_array,
+                        &x.board,
                         &status,
                         &restart_button.get_style_context(),
                         r_index,
@@ -57,11 +55,11 @@ fn main() {
     {
         shadow_clone!(game_state, status);
         restart_button.connect_clicked(move |bself| {
-            button_array.0.iter().flatten().for_each(|button| {
+            for button in game_state.get_mut().board.0.iter().flatten() {
                 button.clear();
                 button.get_style_context().remove_class(class::WINNING_TILE)
-            });
-            game_state.replace_with(|_| game::State::new());
+            };
+            game_state.replace_with(|_| game::State::new(_button_array.clone()));
             bself
                 .get_style_context()
                 .remove_class(class::SHOULD_RESTART);

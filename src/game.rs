@@ -1,10 +1,14 @@
-use crate::data::{Player::{self, O, X}, Board, Tile};
+use crate::data::{
+    Board,
+    Player::{self, O, X},
+    Tile,
+};
 use crate::{class, ButtonMatrix};
 use gtk::prelude::*;
 
 #[derive(Debug, Clone)]
 pub struct State {
-    board: Board,
+    pub board: Board,
     current: Player,
     end: bool,
 }
@@ -26,9 +30,8 @@ impl State {
         row: usize,
         column: usize,
     ) -> Self {
-        if self.board[row][column].is_none() && !self.end {
-            current_button.set(self.current);
-            self.board[row][column] = Some(self.current);
+        if self.board.0[row][column].is_empty() && !self.end {
+            self.board.0[row][column].set(self.current);
             self.current = self.current.swap();
             match &self.winner(all_buttons, restart_button_style) {
                 Some(player) => {
@@ -80,8 +83,8 @@ impl State {
         for possible_winner in &[O, X] {
             if checks
                 .iter()
-                .map(|(x, y)| self.board[*x][*y])
-                .all(|x| x == Some(*possible_winner))
+                .map(|(x, y)| self.board.0[*x][*y])
+                .all(|x| x.is(possible_winner))
             {
                 for check in &checks {
                     all_buttons.0[check.0][check.1]
@@ -95,6 +98,6 @@ impl State {
         None
     }
     fn full(&self) -> bool {
-        self.board.iter().flatten().all(Option::is_some)
+        self.board.0.iter().flatten().all(Tile::not_empty)
     }
 }

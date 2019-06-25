@@ -2,7 +2,7 @@ use gtk::{prelude::*, StyleContext};
 use shadow_clone::shadow_clone;
 use std::{cell::RefCell, rc::Rc};
 
-#[derive(Clone)]
+#[derive(Clone,Debug)]
 pub struct LabeledButton {
     pub button: gtk::Button,
     pub label: gtk::Label,
@@ -26,7 +26,7 @@ impl LabeledButton {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Board(pub [[Tile; 3]; 3]);
 
 impl Board {
@@ -39,12 +39,10 @@ impl Board {
         ]);
         board
     }
-    pub fn clear(&mut self) {
-        
-    }
+    pub fn clear(&mut self) {}
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Tile {
     button: LabeledButton,
     status: Option<Player>,
@@ -70,6 +68,15 @@ impl Tile {
     }
     pub fn connect_clicked<F: Fn(&gtk::Button) + 'static>(&self, f: F) {
         self.button.connect_clicked(f);
+    }
+        pub fn is_empty(&self) -> bool {
+        self.status.is_none()
+    }pub fn not_empty(&self) -> bool {
+        !self.is_empty()
+    }
+
+           pub fn is(&self, player: &Player) -> bool {
+        self.status == Some(*player)
     }
 }
 
