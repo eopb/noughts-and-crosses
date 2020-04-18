@@ -235,12 +235,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "noughts-and-crosses"
-version = "0.0.8"
+version = "0.0.9"
 dependencies = [
  "gdk-pixbuf 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "gtk 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "pango 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "shadow-clone 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "shadow-clone 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -275,7 +275,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "shadow-clone"
-version = "0.1.1"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
@@ -321,7 +321,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum pango 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4e36b55d7cd522bd183efeb3dfabc547bda1f26eadf8a1241dac09ab3fd3242c"
 "checksum pango-sys 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "747ab9cd4d537e6dc5ef0e4308c10dde8b706673b0237fed4e056b8d2c0b23c8"
 "checksum pkg-config 0.3.14 (registry+https://github.com/rust-lang/crates.io-index)" = "676e8eb2b1b4c9043511a9b7bea0915320d7e502b0a079fb03f9635a5252b18c"
-"checksum shadow-clone 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "ad768cd5469b73af1eaa3f55cc0e53c7f34e569a1ddf9e089207ec61c10ac03c"
+"checksum shadow-clone 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "c242f19b8cc8235f084832a625404a68de858e905dcfb77abdcc80e04d1946e2"
 "checksum winapi 0.3.7 (registry+https://github.com/rust-lang/crates.io-index)" = "f10e386af2b13e47c89e7236a7a14a086791a2b88ebad6df9bf42040195cf770"
 "checksum winapi-i686-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6"
 "checksum winapi-x86_64-pc-windows-gnu 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
